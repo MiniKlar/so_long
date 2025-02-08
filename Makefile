@@ -10,8 +10,11 @@ CLINKS		= -ldl -lglfw -pthread -lm
 MLX			= minilibx
 LIBMLX 		= $(MLX)/libmlx42.a
 
+LIB_C		= LIB_C
+
 SRC 		= main.c \
 			./src/window.c \
+			./src/parsing.c \
 
 OBJ 		= $(SRC:.c=.o)
 
@@ -19,8 +22,8 @@ all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(LIBMLX) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)  $(LIBMLX) $(CLINKS)
+$(NAME): $(LIBMLX) $(LIB_C) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) ./LIB_C/LIB_C.a -o $(NAME)  $(LIBMLX) $(CLINKS)
 
 $(LIBMLX): $(MLX)
 	$(MAKE) -C $(MLX)
@@ -28,6 +31,9 @@ $(LIBMLX): $(MLX)
 $(MLX):
 	$(CLONE) git@github.com:MiniKlar/MLX42.git $(MLX)
 	cmake $(MLX) -B $(MLX)
+
+$(LIB_C):
+	$(CLONE) git@github.com:MiniKlar/LIB_C.git LIB_C; cd /home/lomont/42_miniklar/so_long/LIB_C; make; make clean
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
