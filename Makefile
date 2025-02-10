@@ -43,11 +43,12 @@ clean:
 	$(MAKE) clean -C $(MLX)
 
 fclean: clean
-	$(RM) $(LIBMLX)
+	$(RM) -rf $(LIB_C)
+	$(RM) -rf $(MLX)
 	$(RM) $(NAME)
 
 clear: fclean
-	$(RM) -r $(MLX) 
+	$(RM) -rf $(MLX)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/08 20:16:23 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/10 21:20:08 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ bool check_map_is_rectangular(int fd)
 }
 
 char **fill_tab_map(int fd)
-{ 
+{
 	char *tab;
 	char *line;
 	char *tmp;
 	char **tableau;
 	int i;
-	
+
 	i = 0;
 	tab = get_next_line(fd);
 	while (i < 4)
