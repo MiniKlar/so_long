@@ -6,29 +6,20 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/10 21:20:08 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/11 00:16:12 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int init_map(int argc, char **argv)
+bool check_extension_map(t_init *init_data)
 {
+	char *map_name;
 	int fd;
-	char *map_name;
-
-	map_name = ft_strjoin("./maps/", argv[argc - 1]);
-	fd = open(map_name, O_RDONLY);
-	free(map_name);
-	return (fd);
-}
-
-bool check_extension_map(int argc, char **argv, int fd)
-{
-	char *map_name;
 	int i;
 
-	map_name = argv[argc - 1];
+	map_name = init_data->map_name;
+	fd = init_data->fd;
 	i = ft_strlen(map_name);
 	if (fd == -1)
 		return (false);
@@ -41,57 +32,54 @@ bool check_extension_map(int argc, char **argv, int fd)
 	else
 		return(false);
 }
-bool check_map_is_rectangular(int fd)
+bool check_map_is_rectangular(t_init *init_data)
 {
-	char *first_line = get_next_line(fd);
-	char *line = get_next_line(fd);
-	int i, count;
+	char **tab;
+	int i;
+
+	tab = init_data->tab;
 	i = 0;
-	count = 2;
-	while (ft_strchr(line, '\n') != NULL)
+	while (tab[i] != 0 && tab[i + 1])
 	{
-		if (ft_strlen(first_line) == ft_strlen(line))
-		{
-			ft_printf("1ere ligne %d & %d ligne %d\n", ft_strlen(first_line), count, ft_strlen(line));
-			line = get_next_line(fd);
-			i++;
-			count++;
-		}
+		if (ft_strlen(tab[i]) == ft_strlen(tab[i + 1]))
+			;
 		else
 			return (false);
+		i++;
 	}
-	//ft_printf("1ere ligne %s & derniere ligne %s\n", first_line, line);
-	ft_printf("1ere ligne %d & derniere ligne %d\n", ft_strlen(first_line), ft_strlen(line) + 1);
-	if (ft_strlen(first_line) == ft_strlen(line) + 1)
-	{
-		ft_printf("1ere ligne %d & %d ligne %d\n", ft_strlen(first_line), count, ft_strlen(line) + 1);
-	}
-	else
-		return (false);
 	return (true);
 }
 
-char **fill_tab_map(int fd)
+void fill_tab_map(t_init *init_data)
 {
 	char *tab;
 	char *line;
 	char *tmp;
-	char **tableau;
 	int i;
 
 	i = 0;
-	tab = get_next_line(fd);
+	tab = get_next_line(init_data->fd);
+	if (!tab)
+	{
+		ft_printf("TAB RIEN\n");
+		exit(EXIT_FAILURE);
+	}
 	while (i < 4)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(init_data->fd);
+		if (!line)
+		{
+			ft_printf("LINE RIEN\n");
+			exit(EXIT_FAILURE);
+		}
+		//printf("tab:%s et line:%s\n", tab, line);
 		tmp = ft_strjoin(tab, line);
 		tab = tmp;
 		tmp = NULL;
 		i++;
 	}
-	tableau = ft_split(tab, '\n');
+	init_data->tab = ft_split(tab, '\n');
 	free(tab);
 	free(tmp);
 	free(line);
-	return (tableau);
 }

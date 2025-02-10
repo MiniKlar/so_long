@@ -15,6 +15,7 @@ LIB_C		= LIB_C
 SRC 		= main.c \
 			./src/window.c \
 			./src/parsing.c \
+			./src/init.c \
 
 OBJ 		= $(SRC:.c=.o)
 
