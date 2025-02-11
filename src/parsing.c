@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 00:16:12 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/11 02:49:59 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,48 +38,69 @@ bool check_map_is_rectangular(t_init *init_data)
 	int i;
 
 	tab = init_data->tab;
-	i = 0;
-	while (tab[i] != 0 && tab[i + 1])
+	printf("%zu", ft_strlen(tab[0]));
+	if (tab)
 	{
-		if (ft_strlen(tab[i]) == ft_strlen(tab[i + 1]))
-			;
-		else
-			return (false);
-		i++;
+		printf("tu es la");
+		i = 0;
+		while (tab[i] != 0 && tab[i + 1])
+		{
+			if (ft_strlen(tab[i]) == ft_strlen(tab[i + 1]))
+				;
+			else
+				return (false);
+			i++;
+		}
 	}
 	return (true);
 }
-
-void fill_tab_map(t_init *init_data)
+bool check_map_is_not_empty(t_init *init_data)
 {
-	char *tab;
-	char *line;
-	char *tmp;
-	int i;
+	char **map;
 
-	i = 0;
-	tab = get_next_line(init_data->fd);
-	if (!tab)
+	map = init_data->tab;
+	if (init_data->tab != NULL)
 	{
-		ft_printf("TAB RIEN\n");
+		return (true);
+	}
+	else
+		return (false);
+}
+
+void fill_tab(t_init *init_data)
+{
+	char *line;
+	char *map_in_line;
+	char *temp;
+
+	line = get_next_line(init_data->fd);
+	if (!line)
+	{
+		printf("Error\nMap is empty\n");
+		free_struct(init_data);
 		exit(EXIT_FAILURE);
 	}
-	while (i < 4)
+	while (line)
 	{
+		temp = map_in_line;
+		map_in_line = ft_strjoin(map_in_line, line);
+		free(temp);
+		free(line);
 		line = get_next_line(init_data->fd);
-		if (!line)
-		{
-			ft_printf("LINE RIEN\n");
-			exit(EXIT_FAILURE);
-		}
-		//printf("tab:%s et line:%s\n", tab, line);
-		tmp = ft_strjoin(tab, line);
-		tab = tmp;
-		tmp = NULL;
-		i++;
 	}
-	init_data->tab = ft_split(tab, '\n');
-	free(tab);
-	free(tmp);
-	free(line);
+	init_data->tab = ft_split(map_in_line, '\n');
+	free(map_in_line);
 }
+
+void	print_map(char **map)
+{
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		printf("%s\n", map[y]);
+		y++;
+	}
+}
+

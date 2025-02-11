@@ -16,6 +16,7 @@ SRC 		= main.c \
 			./src/window.c \
 			./src/parsing.c \
 			./src/init.c \
+			./src/free.c \
 
 OBJ 		= $(SRC:.c=.o)
 

@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/08 06:01:04 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 02:19:44 by lomont           ###   ########.fr       */
+/*   Created: 2025/02/11 02:34:19 by lomont            #+#    #+#             */
+/*   Updated: 2025/02/11 02:37:02 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void close_window(mlx_key_data_t keydata, void* param)
+void	free_map(char **map)
 {
-	if (keydata.key == MLX_KEY_ESCAPE)
+	int	y;
+
+	if (!map)
+		return ;
+	y = 0;
+	while (map[y])
 	{
-		mlx_close_window(param);
-		mlx_terminate(param);
-		exit(EXIT_SUCCESS);
+		free(map[y]);
+		y++;
 	}
+	free(map);
+}
+void free_struct(t_init *init_data)
+{
+	free_map(init_data->tab);
+	free(init_data->map_name);
+	free(init_data);
 }
