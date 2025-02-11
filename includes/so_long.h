@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 16:52:12 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/11 23:32:13 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ void	print_map(char **map);
 void	free_map(char **map);
 void free_struct(t_init *init_data);
 bool check_map_only_charset(t_init *init_data);
+void map_is_enclosed_by_wall(t_init *init_data);
+bool check_if_wall(char c);
 
 #endif

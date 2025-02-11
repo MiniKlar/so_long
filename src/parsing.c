@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 22:45:46 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/11 23:54:06 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,81 @@ bool check_map_only_charset(t_init *init_data)
 		i++;
 	}
 	return (true);
+}
+
+void map_is_enclosed_by_wall(t_init *init_data)
+{
+	char **tableau = init_data->tab;
+	int x = 0; int y = 0; int x_max = 0; int y_max = 0;
+	bool lol;
+
+	while (tableau[x][y] != '\0')
+		y++;
+	y_max = y;
+	y = 0;
+	while(tableau[x] != 0)
+		x++;
+	x_max = x;
+	x = 0;
+	printf("\n\nx_max = %d & y_max = %d\n\n", x_max, y_max);
+	if (check_if_wall(tableau[x][y]) == true && check_if_wall(tableau[x][y_max - 1]) == true
+		&& check_if_wall(tableau[x_max - 1][y]) == true && check_if_wall(tableau[x_max - 1][y_max - 1]) == true)
+	{
+		printf("LES ANGLES DE LA MAP SONT BONS\n");
+	}
+	else
+		printf("LES ANGLES DE LA MAP SONT PAS BONS\n");
+	while (tableau[x][y] != '\0')
+	{
+		if (check_if_wall(tableau[x][y]) == true)
+			lol = true;
+		else
+		{
+			lol = false;
+			break;
+		}
+		y++;
+	}
+	y = 0;
+	while (tableau[x] != 0 && lol == true)
+	{
+		if (check_if_wall(tableau[x][y]) == true)
+			lol = true;
+		else
+		{
+			lol = false;
+			break;
+		}
+		x++;
+	}
+	y = 0;
+	while (tableau[x_max - 1][y] != '\0' && lol == true)
+	{
+		if (check_if_wall(tableau[x_max - 1][y]) == true)
+			lol = true;
+		else
+			lol = false;
+		y++;
+	}
+	x = 0;
+	while (tableau[x] != 0 && lol == true)
+	{
+		if (check_if_wall(tableau[x][y_max - 1]) == true)
+			lol = true;
+		else
+			lol = false;
+		x++;
+	}
+	if (lol == true)
+		printf("\nLES CONTOURS DE LA MAP SONT BONS\n");
+	else
+		printf("\n!!!!!!!!!!!LES CONTOURS DE LA MAP SONT PAS BONS !!!!!!!!!!\n");
+}
+
+bool check_if_wall(char c)
+{
+	if (c == '1')
+		return (true);
+	else
+		return (false);
 }
