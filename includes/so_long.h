@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 02:37:35 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/11 16:52:12 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void fill_tab(t_init *init_data);
 void	print_map(char **map);
 void	free_map(char **map);
 void free_struct(t_init *init_data);
+bool check_map_only_charset(t_init *init_data);
 
 #endif

@@ -4,7 +4,7 @@ CC 			= cc
 RM			= rm -f
 CLONE 		= git clone --depth=1
 
-CFLAGS 		+= -Wall -Wextra -Werror
+CFLAGS 		+= -Wall -Wextra -Werror -ggdb
 CLINKS		= -ldl -lglfw -pthread -lm
 
 MLX			= minilibx
@@ -17,6 +17,7 @@ SRC 		= main.c \
 			./src/parsing.c \
 			./src/init.c \
 			./src/free.c \
+			./src/print.c \
 
 OBJ 		= $(SRC:.c=.o)
 

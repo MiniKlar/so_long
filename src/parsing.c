@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 02:49:59 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/11 22:45:46 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ bool check_map_is_rectangular(t_init *init_data)
 	printf("%zu", ft_strlen(tab[0]));
 	if (tab)
 	{
-		printf("tu es la");
 		i = 0;
 		while (tab[i] != 0 && tab[i + 1])
 		{
@@ -80,10 +79,16 @@ void fill_tab(t_init *init_data)
 		free_struct(init_data);
 		exit(EXIT_FAILURE);
 	}
+	map_in_line = ft_strdup("");
 	while (line)
 	{
 		temp = map_in_line;
 		map_in_line = ft_strjoin(map_in_line, line);
+		if (!map_in_line)
+		{
+			free_struct(init_data);
+			exit(EXIT_FAILURE);
+		}
 		free(temp);
 		free(line);
 		line = get_next_line(init_data->fd);
@@ -92,15 +97,33 @@ void fill_tab(t_init *init_data)
 	free(map_in_line);
 }
 
-void	print_map(char **map)
+bool check_map_only_charset(t_init *init_data)
 {
-	int	y;
+	char **tableau;
+	int i;
+	int k;
 
-	y = 0;
-	while (map[y])
+	ft_printf("TU ES LA only charset\n");
+	tableau = init_data->tab;
+	i = 0;
+	while (tableau[i] != 0)
 	{
-		printf("%s\n", map[y]);
-		y++;
+		k = 0;
+		while(tableau[i][k] != '\0')
+		{
+			if (ft_isalnum(tableau[i][k]) == 0)
+			{
+				ft_printf("\nMAP INVALIDE ICI :%d et voici le char invalide :%c |\n", k, ft_isalnum(tableau[i][k]));
+				return (false);
+			}
+			else
+			{
+				//ft_printf("is_alnum = %d | ",ft_isalnum(tableau[i][k]));
+				k++;
+			}
+		}
+		//ft_printf("\nk = %d\n", k);
+		i++;
 	}
+	return (true);
 }
-
