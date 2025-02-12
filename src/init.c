@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:33:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 00:10:47 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/12 04:13:53 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void init_all(int argc, char **argv, t_init *init_data)
 {
 	init_map(argc, argv, init_data);
 	init_fd(init_data);
+	init_data->collectibles = 0;
+	init_data->exit = 0;
+	init_data->N_exit = 0;
+	init_data->N_collectibles = 0;
 }
 
 void init_map(int argc, char **argv, t_init *init_data)

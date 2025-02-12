@@ -6,12 +6,13 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 23:54:06 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/12 04:32:06 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+//TODO VERIFIER SI ON PEUT PASSER PORTE (condition en plus pour qu'on puisse marcher dessus)
 bool check_extension_map(t_init *init_data)
 {
 	char *map_name;
@@ -38,7 +39,7 @@ bool check_map_is_rectangular(t_init *init_data)
 	int i;
 
 	tab = init_data->tab;
-	printf("%zu", ft_strlen(tab[0]));
+	//printf("%zu", ft_strlen(tab[0]));
 	if (tab)
 	{
 		i = 0;
@@ -128,7 +129,7 @@ bool check_map_only_charset(t_init *init_data)
 	return (true);
 }
 
-void map_is_enclosed_by_wall(t_init *init_data)
+bool map_is_enclosed_by_wall(t_init *init_data)
 {
 	char **tableau = init_data->tab;
 	int x = 0; int y = 0; int x_max = 0; int y_max = 0;
@@ -192,9 +193,15 @@ void map_is_enclosed_by_wall(t_init *init_data)
 		x++;
 	}
 	if (lol == true)
+	{
 		printf("\nLES CONTOURS DE LA MAP SONT BONS\n");
+		return (true);
+	}
 	else
+	{
 		printf("\n!!!!!!!!!!!LES CONTOURS DE LA MAP SONT PAS BONS !!!!!!!!!!\n");
+		return (false);
+	}
 }
 
 bool check_if_wall(char c)
@@ -203,4 +210,120 @@ bool check_if_wall(char c)
 		return (true);
 	else
 		return (false);
+}
+
+bool check_E_P_C(t_init *init_data)
+{
+	char **tableau;
+	int P;
+	int x;
+	int y;
+
+	P = 0;
+	x = 0;
+	y = 0;
+	tableau = init_data->tab;
+	while (tableau[x] != 0)
+	{
+		y = 0;
+		while (tableau[x][y] != '\0')
+		{
+			if (tableau[x][y] == 'E')
+				init_data->exit++;
+			else if (tableau[x][y] == 'P')
+				P++;
+			else if (tableau[x][y] == 'C')
+			{
+				ft_printf("\nLOL JAI TROUVE UN COLLECTIBLE\n");
+				init_data->collectibles++;
+			}
+			y++;
+		}
+		x++;
+	}
+	ft_printf("\nVOICI E: %d | VOICI P: %d | VOICI C: %d\n", init_data->exit, P, init_data->collectibles);
+	if (init_data->exit != 1 || P != 1)
+	{
+		if (init_data->exit > 1)
+			ft_printf("\ntrop d'exit\n");
+		else
+			ft_printf("\ntrop de start position\n");
+		return (false);
+	}
+	else if (init_data->collectibles < 1)
+	{
+		ft_printf("\nPas assez de collectibles\n");
+		return (false);
+	}
+	return (true);
+}
+
+bool flood_fill_map(t_init *init_data)
+{
+	char **tableau;
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	tableau = init_data->tab;
+	while (tableau[x] != 0 && tableau[x][y] != 'P')
+	{
+		y = 0;
+		while (tableau[x][y] != '\0' && tableau[x][y] != 'P')
+		{
+			y++;
+		}
+		if (tableau[x][y] == 'P')
+			;
+		else
+			x++;
+	}
+	printf("la start position est situe a x: %d et y: %d et le char est : %c\n", x, y, tableau[x][y]);
+	if (tableau[x + 1][y] == '0' || tableau[x + 1][y] == 'E')
+	{
+		x++;
+		tableau = flood(init_data,tableau, x, y);
+	}
+	if (tableau[x - 1][y] == '0' || tableau[x - 1][y] == 'E')
+	{
+		x--;
+		tableau = flood(init_data,tableau, x, y);
+	}
+	if (tableau[x][y + 1] == '0' || tableau[x][y + 1] == 'E')
+	{
+		y++;
+		tableau = flood(init_data,tableau, x, y);
+	}
+	if (tableau[x][y - 1] == '0' || tableau[x][y - 1] == 'E')
+	{
+		y--;
+		tableau = flood(init_data,tableau, x, y);
+	}
+	print_map(tableau);
+	printf("\n%d et %d et %d et %d\n", init_data->N_exit, init_data->exit, init_data->N_collectibles, init_data->collectibles);
+	if (init_data->N_exit == init_data->exit && init_data->N_collectibles == init_data->collectibles)
+	{
+		printf("\nMAP EST REALISABLE\n");
+		return (true);
+	}
+	else
+		return (false);
+}
+char **flood(t_init *init_data,char **tableau, int x, int y)
+{
+	//printf("\ndans le flood, tableau = %c\n", tableau[x][y]);
+    if (tableau[x][y] == 'E' || tableau[x][y] == '0' || tableau[x][y] == 'C')
+	{
+		if (tableau[x][y] == 'E')
+			init_data->N_exit++;
+		else if (tableau[x][y] == 'C')
+			init_data->N_collectibles++;
+		tableau[x][y] = 'V';
+        flood(init_data, tableau, x + 1, y);
+        flood(init_data, tableau, x - 1, y);
+        flood(init_data, tableau, x, y + 1);
+        flood(init_data, tableau, x, y - 1);
+    }
+	return (tableau);
 }

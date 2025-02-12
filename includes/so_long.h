@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/11 23:32:13 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/12 04:13:26 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ typedef struct 	s_init
 	char *map_name;
 	int fd;
 	char **tab;
+	int collectibles;
+	int exit;
+	int N_collectibles;
+	int N_exit;
 }				t_init;
 
 
@@ -48,7 +52,10 @@ void	print_map(char **map);
 void	free_map(char **map);
 void free_struct(t_init *init_data);
 bool check_map_only_charset(t_init *init_data);
-void map_is_enclosed_by_wall(t_init *init_data);
+bool map_is_enclosed_by_wall(t_init *init_data);
 bool check_if_wall(char c);
+bool check_E_P_C(t_init *init_data);
+bool flood_fill_map(t_init *init_data);
+char **flood(t_init *init_data,char **tableau, int x, int y);
 
 #endif
