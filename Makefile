@@ -20,8 +20,8 @@ SRC 		= main.c \
 			./src/init.c \
 			./src/free.c \
 			./src/print.c \
-			./src/utils.c \
-			./src/flood_fill.c \
+			./src/utils/utils.c \
+			./src/parsing/flood_fill.c \
 
 OBJ 		= $(SRC:.c=.o)
 
