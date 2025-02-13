@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 01:58:15 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 03:52:04 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,14 @@ typedef struct 	s_init
 
 typedef struct	s_data
 {
-	void	*img;
-	char	*addr;
+	mlx_image_t *img;
+	mlx_image_t *img2;
+	mlx_image_t *img3;
+	mlx_texture_t *C4;
+	mlx_texture_t *perso_T;
+	mlx_texture_t *exit;
+	//void	*img;
+	//char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -69,5 +75,6 @@ bool check_rectangle_length(bool is_wall, char **tableau, int x, int y, int y_ma
 void check_parsing_alt(t_init *init_data);
 void check_parsing(t_init *init_data);
 void check_all_parsing(t_init *init_data);
+t_data *init_game_data(void);
 
 #endif

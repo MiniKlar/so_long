@@ -6,11 +6,11 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:59:31 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 00:03:23 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 02:10:39 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void fill_tab(t_init *init_data)
 {

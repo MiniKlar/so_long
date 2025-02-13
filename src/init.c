@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:33:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/12 22:02:49 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 03:51:58 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ t_init *init_struct(void)
 	new_node->fd = 0;
 	new_node->map_name = NULL;
 	new_node->tab = NULL;
+	return (new_node);
+}
+t_data *init_game_data(void)
+{
+	t_data	*new_node;
+
+	new_node = malloc(sizeof(t_data));
+	if (!new_node)
+		return (NULL);
 	return (new_node);
 }
 

@@ -6,11 +6,11 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:08:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 00:24:27 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 02:11:03 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 bool flood_fill_map(t_init *init_data)
 {
