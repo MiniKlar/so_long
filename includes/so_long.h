@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 01:10:37 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 01:58:15 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ int	ft_ischarnum(int c);
 void check_collectibles_tab(t_init *init_data ,char **tableau);
 bool check_rectangle_width(bool is_wall, char **tableau, int x, int y, int x_max);
 bool check_rectangle_length(bool is_wall, char **tableau, int x, int y, int y_max);
+void check_parsing_alt(t_init *init_data);
+void check_parsing(t_init *init_data);
+void check_all_parsing(t_init *init_data);
 
 #endif

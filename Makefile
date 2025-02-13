@@ -16,6 +16,7 @@ SRC 		= main.c \
 			./src/window.c \
 			./src/parsing/parsing.c \
 			./src/parsing/parsing_1.c \
+			./src/parsing/check.c \
 			./src/init.c \
 			./src/free.c \
 			./src/print.c \

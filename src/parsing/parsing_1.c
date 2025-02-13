@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 00:50:42 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 01:44:34 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 01:50:30 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,3 +60,37 @@ bool check_rectangle_width(bool is_wall, char **tableau, int x, int y, int x_max
 	}
 	return (is_wall);
 }
+bool check_E_P_C(t_init *init_data)
+{
+	char **tableau;
+
+	tableau = init_data->tab;
+	check_collectibles_tab(init_data, tableau);
+	if (init_data->exit != 1 || init_data->start_position != 1 || init_data->collectibles < 1)
+		return (false);
+	return (true);
+}
+void check_collectibles_tab(t_init *init_data ,char **tableau)
+{
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while (tableau[x] != 0)
+	{
+		y = 0;
+		while (tableau[x][y] != '\0')
+		{
+			if (tableau[x][y] == 'E')
+				init_data->exit++;
+			else if (tableau[x][y] == 'P')
+				init_data->start_position++;
+			else if (tableau[x][y] == 'C')
+				init_data->collectibles++;
+			y++;
+		}
+		x++;
+	}
+}
+

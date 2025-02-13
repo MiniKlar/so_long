@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 01:44:40 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 01:50:22 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,47 +108,8 @@ bool map_is_enclosed_by_wall(t_init *init_data, int x_max, int y_max)
 	is_wall = check_rectangle_length(is_wall, tableau, x, y, y_max);
 	is_wall = check_rectangle_width(is_wall, tableau, x, y, x_max);
 	if (is_wall == true)
-	{
-		printf("\nLES CONTOURS DE LA MAP SONT BONS\n");
 		return (true);
-	}
 	else
-	{
-		printf("\n!!!!!!!!!!!LES CONTOURS DE LA MAP SONT PAS BONS !!!!!!!!!!\n");
 		return (false);
-	}
 }
 
-bool check_E_P_C(t_init *init_data)
-{
-	char **tableau;
-
-	tableau = init_data->tab;
-	check_collectibles_tab(init_data, tableau);
-	if (init_data->exit != 1 || init_data->start_position != 1 || init_data->collectibles < 1)
-		return (false);
-	return (true);
-}
-void check_collectibles_tab(t_init *init_data ,char **tableau)
-{
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	while (tableau[x] != 0)
-	{
-		y = 0;
-		while (tableau[x][y] != '\0')
-		{
-			if (tableau[x][y] == 'E')
-				init_data->exit++;
-			else if (tableau[x][y] == 'P')
-				init_data->start_position++;
-			else if (tableau[x][y] == 'C')
-				init_data->collectibles++;
-			y++;
-		}
-		x++;
-	}
-}
