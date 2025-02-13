@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/12 04:13:26 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 01:10:37 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ typedef struct 	s_init
 	char **tab;
 	int collectibles;
 	int exit;
+	int start_position;
 	int N_collectibles;
 	int N_exit;
+	int x;
+	int y;
 }				t_init;
 
 
@@ -52,10 +55,16 @@ void	print_map(char **map);
 void	free_map(char **map);
 void free_struct(t_init *init_data);
 bool check_map_only_charset(t_init *init_data);
-bool map_is_enclosed_by_wall(t_init *init_data);
+bool map_is_enclosed_by_wall(t_init *init_data, int x_max, int y_max);
 bool check_if_wall(char c);
 bool check_E_P_C(t_init *init_data);
 bool flood_fill_map(t_init *init_data);
 char **flood(t_init *init_data,char **tableau, int x, int y);
+char **set_next_position_floodfill(char **tableau, t_init *init_data);
+void start_position_floodfill(t_init *init_data, char **tableau);
+int	ft_ischarnum(int c);
+void check_collectibles_tab(t_init *init_data ,char **tableau);
+bool check_rectangle_width(bool is_wall, char **tableau, int x, int y, int x_max);
+bool check_rectangle_length(bool is_wall, char **tableau, int x, int y, int y_max);
 
 #endif

@@ -14,10 +14,13 @@ LIB_C		= LIB_C
 
 SRC 		= main.c \
 			./src/window.c \
-			./src/parsing.c \
+			./src/parsing/parsing.c \
+			./src/parsing/parsing_1.c \
 			./src/init.c \
 			./src/free.c \
 			./src/print.c \
+			./src/utils.c \
+			./src/flood_fill.c \
 
 OBJ 		= $(SRC:.c=.o)
 
@@ -55,4 +58,4 @@ clear: fclean
 
 re: fclean all
 
-.PHONY:		all bonus clear clean fclean re
+.PHONY:	all bonus clear clean fclean re

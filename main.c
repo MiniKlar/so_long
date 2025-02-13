@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 01:58:48 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/12 04:10:20 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 01:11:36 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 				free_struct(init_data);
 				exit(EXIT_FAILURE);
 			}
-			else if (map_is_enclosed_by_wall(init_data) == false)
+			else if (map_is_enclosed_by_wall(init_data, 0, 0) == false)
 			{
 				ft_printf("MAP INVALIDE\n");
 				free_struct(init_data);
@@ -69,6 +69,8 @@ int main(int argc, char **argv)
 				exit(EXIT_FAILURE);
 			}
 			// mlx = mlx_init(1920, 1080, "so_long", true);
+			// if(!mlx)
+			// 	return (free_struct(init_data), ft_putstr_fd("Error failed to init MLX\n", 2), 1);
 			// img = mlx_new_image(mlx, 1920, 1080);
 			// mlx_image_to_window(mlx, img, 0, 0);
 			// mlx_put_pixel(img, 1920/2, 1080/2, 0x00FF00FF);
