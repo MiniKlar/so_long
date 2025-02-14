@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/14 04:27:59 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/14 05:27:51 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,15 @@ typedef struct 	s_init
 typedef struct	s_data
 {
 	mlx_image_t *img;
-	// mlx_image_t *img2;
-	// mlx_image_t *img3;
-	// mlx_texture_t *C4;
-	//mlx_texture_t *perso_T;
-	// mlx_texture_t *exit;
+	mlx_image_t *img2;
+	mlx_image_t *img3;
+	//mlx_image_t *img4;
+	//mlx_image_t *img5;
+	//mlx_texture_t *C4;
+	mlx_texture_t *wall;
+	mlx_texture_t *floor;
+	mlx_texture_t *perso_T;
+	//mlx_texture_t *exit;
 	//void	*img;
 	//char	*addr;
 	int		bits_per_pixel;
