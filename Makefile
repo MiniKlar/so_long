@@ -17,11 +17,13 @@ SRC 		= main.c \
 			./src/parsing/parsing.c \
 			./src/parsing/parsing_1.c \
 			./src/parsing/check.c \
-			./src/init.c \
 			./src/free.c \
 			./src/print.c \
 			./src/utils/utils.c \
 			./src/parsing/flood_fill.c \
+			./src/handler/key_handler.c \
+			./src/init/init.c \
+			./src/init/init_2.c \
 
 OBJ 		= $(SRC:.c=.o)
 

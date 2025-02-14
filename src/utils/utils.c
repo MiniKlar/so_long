@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:59:31 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 02:10:39 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/14 03:21:56 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void fill_tab(t_init *init_data)
 	if (!line)
 	{
 		printf("Error\nMap is empty\n");
-		free_struct(init_data);
+		free_parsing(init_data);
 		exit(EXIT_FAILURE);
 	}
 	map_in_line = ft_strdup("");
@@ -32,7 +32,7 @@ void fill_tab(t_init *init_data)
 		map_in_line = ft_strjoin(map_in_line, line);
 		if (!map_in_line)
 		{
-			free_struct(init_data);
+			free_parsing(init_data);
 			exit(EXIT_FAILURE);
 		}
 		free(temp);

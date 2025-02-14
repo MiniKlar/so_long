@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 00:50:42 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 01:50:30 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/14 00:12:43 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ bool check_E_P_C(t_init *init_data)
 	tableau = init_data->tab;
 	check_collectibles_tab(init_data, tableau);
 	if (init_data->exit != 1 || init_data->start_position != 1 || init_data->collectibles < 1)
+	{
+		//printf("%d %d %d \n\n", init_data->collectibles, init_data->exit, init_data->start_position);
 		return (false);
+	}
 	return (true);
 }
 void check_collectibles_tab(t_init *init_data ,char **tableau)
@@ -85,7 +88,11 @@ void check_collectibles_tab(t_init *init_data ,char **tableau)
 			if (tableau[x][y] == 'E')
 				init_data->exit++;
 			else if (tableau[x][y] == 'P')
+			{
 				init_data->start_position++;
+				init_data->player_pos_x = x;
+				init_data->player_pos_y = y;
+			}
 			else if (tableau[x][y] == 'C')
 				init_data->collectibles++;
 			y++;

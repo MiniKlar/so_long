@@ -6,11 +6,11 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:33:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 03:51:58 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/14 04:32:44 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 //TODO CLEAR MAP_NAME malloc
 
@@ -43,9 +43,14 @@ void init_all(int argc, char **argv, t_init *init_data)
 	init_data->collectibles = 0;
 	init_data->exit = 0;
 	init_data->N_exit = 0;
+	init_data->start_position = 0;
 	init_data->N_collectibles = 0;
 	init_data->x = 0;
 	init_data->y = 0;
+	init_data->x_max = 0;
+	init_data->y_max = 0;
+	init_data->player_pos_x = 0;
+	init_data->player_pos_y = 0;
 }
 
 void init_map(int argc, char **argv, t_init *init_data)

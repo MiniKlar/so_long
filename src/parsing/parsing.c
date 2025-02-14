@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 01:50:22 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/14 04:22:15 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ bool check_map_only_charset(t_init *init_data)
 		}
 		i++;
 	}
+	init_data->x_max = i;
+	init_data->y_max = k;
 	return (true);
 }
 

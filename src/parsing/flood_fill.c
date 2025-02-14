@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:08:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 02:11:03 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/13 21:57:10 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ bool flood_fill_map(t_init *init_data)
 	if (init_data->N_exit == init_data->exit && init_data->N_collectibles == init_data->collectibles)
 		return (true);
 	else
+	{
+		//printf("%d %d %d \n\n", init_data->collectibles, init_data->exit, init_data->start_position);
 		return (false);
+	}
 }
 void start_position_floodfill(t_init *init_data, char **tableau)
 {
