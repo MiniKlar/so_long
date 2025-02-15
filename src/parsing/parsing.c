@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/14 04:22:15 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/15 02:38:43 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,10 @@ bool map_is_enclosed_by_wall(t_init *init_data, int x_max, int y_max)
 	x_max = x;
 	x = 0;
 	is_wall = check_rectangle_length(is_wall, tableau, x, y, y_max);
-	is_wall = check_rectangle_width(is_wall, tableau, x, y, x_max);
+	if (is_wall == false)
+		;
+	else
+		is_wall = check_rectangle_width(is_wall, tableau, x, y, x_max);
 	if (is_wall == true)
 		return (true);
 	else

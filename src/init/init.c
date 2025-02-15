@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:33:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/14 04:32:44 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/15 01:14:14 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_init *init_struct(void)
 	new_node->fd = 0;
 	new_node->map_name = NULL;
 	new_node->tab = NULL;
+	new_node->flood_tab = NULL;
 	return (new_node);
 }
 t_data *init_game_data(void)
@@ -33,6 +34,16 @@ t_data *init_game_data(void)
 	new_node = malloc(sizeof(t_data));
 	if (!new_node)
 		return (NULL);
+	new_node->C4 = NULL;
+	new_node->exit = NULL;
+	new_node->floor = NULL;
+	new_node->player = NULL;
+	new_node->wall = NULL;
+	new_node->img_C4 = NULL;
+	new_node->img_exit = NULL;
+	new_node->img_floor = NULL;
+	new_node->img_player = NULL;
+	new_node->img_wall = NULL;
 	return (new_node);
 }
 

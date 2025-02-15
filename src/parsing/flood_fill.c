@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:08:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/13 21:57:10 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/15 02:25:33 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@ bool flood_fill_map(t_init *init_data)
 {
 	char **tableau;
 
-	tableau = init_data->tab;
+	tableau = init_data->flood_tab;
+	//printf("\n\n TOIII%c\n\n", tableau[2][5]);
 	start_position_floodfill(init_data, tableau);
 	set_next_position_floodfill(tableau, init_data);
-	tableau = flood(init_data,tableau, init_data->x, init_data->y);
+	tableau = flood(init_data, tableau, init_data->x, init_data->y);
 	print_map(tableau);
 	if (init_data->N_exit == init_data->exit && init_data->N_collectibles == init_data->collectibles)
 		return (true);
 	else
 	{
-		//printf("%d %d %d \n\n", init_data->collectibles, init_data->exit, init_data->start_position);
+		//printf("%d %d %d %d \n\n", init_data->collectibles, init_data->exit, init_data->N_exit, init_data->N_collectibles);
 		return (false);
 	}
 }
@@ -59,17 +60,18 @@ char **set_next_position_floodfill(char **tableau, t_init *init_data)
 	y = init_data->y;
 	if (tableau[x + 1][y] == '0' || tableau[x + 1][y] == 'E' || tableau[x + 1][y] == 'C')
 		init_data->x++;
-	if (tableau[x - 1][y] == '0' || tableau[x - 1][y] == 'E' || tableau[x - 1][y] == 'C')
+	else if (tableau[x - 1][y] == '0' || tableau[x - 1][y] == 'E' || tableau[x - 1][y] == 'C')
 		init_data->x--;
-	if (tableau[x][y + 1] == '0' || tableau[x][y + 1] == 'E' || tableau[x][y + 1] == 'C')
+	else if (tableau[x][y + 1] == '0' || tableau[x][y + 1] == 'E' || tableau[x][y + 1] == 'C')
 		init_data->y++;
-	if (tableau[x][y - 1] == '0' || tableau[x][y - 1] == 'E' || tableau[x][y - 1] == 'C')
+	else if (tableau[x][y - 1] == '0' || tableau[x][y - 1] == 'E' || tableau[x][y - 1] == 'C')
 		init_data->y--;
 	return (tableau);
 }
 
 char **flood(t_init *init_data,char **tableau, int x, int y)
 {
+	//printf("\n\n|%c|\n\n", tableau[x][y]);
     if (tableau[x][y] == 'E' || tableau[x][y] == '0' || tableau[x][y] == 'C')
 	{
 		if (tableau[x][y] == 'E')

@@ -6,17 +6,20 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:59:31 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/14 03:21:56 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/15 01:49:25 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+//TODO REVOIR FILL TAB POUR REMPLIR FLOOD FILL;
 
 void fill_tab(t_init *init_data)
 {
 	char *line;
 	char *map_in_line;
 	char *temp;
+	char *tmp;
 
 	line = get_next_line(init_data->fd);
 	if (!line)
@@ -39,8 +42,11 @@ void fill_tab(t_init *init_data)
 		free(line);
 		line = get_next_line(init_data->fd);
 	}
-	init_data->tab = ft_split(map_in_line, '\n');
-	free(map_in_line);
+	tmp = map_in_line;
+	init_data->tab = ft_split(tmp, '\n');
+	init_data->flood_tab = ft_split(map_in_line, '\n');
+	free(tmp);
+	//free(map_in_line);
 }
 bool check_if_wall(char c)
 {

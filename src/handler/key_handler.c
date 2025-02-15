@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:56:55 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/14 04:22:48 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/15 01:55:24 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,25 @@ void move_player(mlx_key_data_t keydata, t_init *init_data, int x, int y)
 	{
 		// if (tableau[x + 1][y] == '0' || tableau[x + 1][y] == 'E' || tableau[x + 1][y] == 'C')
 		// 	init_data->player_pos_x += 1;
-		printf("LOL1");
+		printf("UP");
 	}
 	else if (keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
 	{
 		// if (tableau[x - 1][y] == '0' || tableau[x - 1][y] == 'E' || tableau[x - 1][y] == 'C')
 		// 	init_data->player_pos_x -= 1;
-		printf("LOL1");
+		printf("DOWN");
 	}
 	else if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
 	{
 		// if (tableau[x][y + 1] == '0' || tableau[x][y + 1] == 'E' || tableau[x][y + 1] == 'C')
 		// 	init_data->player_pos_y += 1;
-		printf("LOL1");
+		printf("RIGHT");
 	}
 	else if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
 	{
 		// if (tableau[x][y - 1] == '0' || tableau[x][y - 1] == 'E' || tableau[x][y - 1] == 'C')
 		// 	init_data->player_pos_y -= 1;
-		printf("LOL1");
+		printf("LEFT");
 	}
 }
 // void close_window(mlx_key_data_t keydata, mlx_t* mlx)

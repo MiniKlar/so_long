@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/14 05:27:51 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/15 02:06:12 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct 	s_init
 	char *map_name;
 	int fd;
 	char **tab;
+	char **flood_tab;
 	int player_pos_x;
 	int player_pos_y;
 	int collectibles;
@@ -42,21 +43,21 @@ typedef struct 	s_init
 
 typedef struct	s_data
 {
-	mlx_image_t *img;
-	mlx_image_t *img2;
-	mlx_image_t *img3;
-	//mlx_image_t *img4;
-	//mlx_image_t *img5;
-	//mlx_texture_t *C4;
+	mlx_image_t *img_wall;
+	mlx_image_t *img_floor;
+	mlx_image_t *img_player;
+	mlx_image_t *img_exit;
+	mlx_image_t *img_C4;
+	mlx_texture_t *C4;
 	mlx_texture_t *wall;
 	mlx_texture_t *floor;
-	mlx_texture_t *perso_T;
-	//mlx_texture_t *exit;
+	mlx_texture_t *player;
+	mlx_texture_t *exit;
 	//void	*img;
 	//char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	//int		bits_per_pixel;
+	//int		line_length;
+	//int		endian;
 }				t_data;
 
 typedef struct	s_struct
@@ -97,7 +98,7 @@ t_data *init_game_data(void);
 void key_handler(mlx_key_data_t keydata, void* param);
 t_struct *init_ptr_to_struct();
 void move_player(mlx_key_data_t keydata, t_init *init_data, int x, int y);
-void free_mlx(mlx_t *mlx);
+void free_mlx(t_struct *all_struct);
 void free_parsing(t_init *init_data);
 void free_all(void *param);
 
