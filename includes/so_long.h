@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/15 02:06:12 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/15 06:57:35 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct 	s_init
 	int player_pos_x;
 	int player_pos_y;
 	int collectibles;
+	int finish_collectibles;
 	int exit;
 	int start_position;
 	int N_collectibles;
@@ -97,7 +98,7 @@ void check_all_parsing(t_init *init_data);
 t_data *init_game_data(void);
 void key_handler(mlx_key_data_t keydata, void* param);
 t_struct *init_ptr_to_struct();
-void move_player(mlx_key_data_t keydata, t_init *init_data, int x, int y);
+void move_player(mlx_key_data_t keydata, t_struct *all_struct, int x, int y);
 void free_mlx(t_struct *all_struct);
 void free_parsing(t_init *init_data);
 void free_all(void *param);

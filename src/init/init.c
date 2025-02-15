@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:33:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/15 01:14:14 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/15 06:43:40 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void init_all(int argc, char **argv, t_init *init_data)
 	init_data->y_max = 0;
 	init_data->player_pos_x = 0;
 	init_data->player_pos_y = 0;
+	init_data->finish_collectibles = 0;
 }
 
 void init_map(int argc, char **argv, t_init *init_data)
