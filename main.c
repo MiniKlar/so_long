@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 01:58:48 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 02:27:47 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 04:06:47 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 // TODO CLOSE FD
 //TODO VERIFITER RELINK MAKEFILE
 //TODO IMPLEMENTER COMPTEUR MOUVEMENT
+//TODO VOIR DISPLAY= VOIR SI MLX RENVOIE BIEN UN TRUC
+//TODO CHECK MAP
 
 
 int main(int argc, char **argv)

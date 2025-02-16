@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:56:55 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 03:21:34 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 03:54:18 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void move_player(mlx_key_data_t keydata, t_struct *all_struct, int x, int y)
 	index = 0;
 	tableau = all_struct->struct_init->tab;
 	tmp = all_struct->first_node->node;
-	if (keydata.action == 1)
+	if (keydata.action != 0)
 	{
 		if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 		{

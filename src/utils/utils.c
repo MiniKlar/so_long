@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:59:31 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 03:10:41 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 04:04:23 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool fill_tab(t_init *init_data)
 	char *line;
 	char *map_in_line;
 	char *temp;
-	char *tmp;
+	// char *tmp;
 
 	line = get_next_line(init_data->fd);
 	if (!line)
@@ -35,10 +35,11 @@ bool fill_tab(t_init *init_data)
 		free(line);
 		line = get_next_line(init_data->fd);
 	}
-	tmp = map_in_line;
-	init_data->tab = ft_split(tmp, '\n');
+	// tmp = map_in_line;
+	// ft_strnstr()
+	init_data->tab = ft_split(map_in_line, '\n');
 	init_data->flood_tab = ft_split(map_in_line, '\n');
-	free(tmp);
+	free(map_in_line);
 	return (true);
 }
 bool check_if_wall(char c)
