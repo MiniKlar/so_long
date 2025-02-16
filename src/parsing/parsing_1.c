@@ -6,23 +6,23 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 00:50:42 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/15 01:35:46 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 10:35:06 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-bool check_rectangle_length(bool is_wall, char **tableau, int x, int y, int y_max)
+bool	check_rectangle_length(bool is_wall, char **tableau, int y, int y_max)
 {
+	int	x;
+
+	x = 0;
 	while (tableau[x] != 0 && is_wall == true)
 	{
 		if (check_if_wall(tableau[x][y]) == true)
 			is_wall = true;
 		else
-		{
-			is_wall = false;
-			break;
-		}
+			return (false);
 		x++;
 	}
 	x = 0;
@@ -31,19 +31,23 @@ bool check_rectangle_length(bool is_wall, char **tableau, int x, int y, int y_ma
 		if (check_if_wall(tableau[x][y_max - 1]) == true)
 			is_wall = true;
 		else
-			is_wall = false;
+			return (false);
 		x++;
 	}
 	return (is_wall);
 }
-bool check_rectangle_width(bool is_wall, char **tableau, int x, int y, int x_max)
+
+bool	check_rectangle_width(bool is_wall, char **tableau, int x, int x_max)
 {
+	int	y;
+
+	y = 0;
 	while (tableau[x_max - 1][y] != '\0' && is_wall == true)
 	{
 		if (check_if_wall(tableau[x_max - 1][y]) == true)
 			is_wall = true;
 		else
-			is_wall = false;
+			return (false);
 		y++;
 	}
 	y = 0;
@@ -52,31 +56,28 @@ bool check_rectangle_width(bool is_wall, char **tableau, int x, int y, int x_max
 		if (check_if_wall(tableau[x][y]) == true)
 			is_wall = true;
 		else
-		{
-			is_wall = false;
-			break;
-		}
+			return (false);
 		y++;
 	}
 	return (is_wall);
 }
-bool check_E_P_C(t_init *init_data)
+
+bool	check_e_p_c(t_init *init_data)
 {
-	char **tableau;
+	char	**tableau;
 
 	tableau = init_data->tab;
 	check_collectibles_tab(init_data, tableau);
-	if (init_data->exit != 1 || init_data->start_position != 1 || init_data->collectibles < 1)
-	{
-		//printf("%d %d %d \n\n", init_data->collectibles, init_data->exit, init_data->start_position);
+	if (init_data->exit != 1 || init_data->start_position != 1
+		|| init_data->collectibles < 1)
 		return (false);
-	}
 	return (true);
 }
-void check_collectibles_tab(t_init *init_data ,char **tableau)
+
+void	check_collectibles_tab(t_init *init_data, char **tableau)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -100,4 +101,3 @@ void check_collectibles_tab(t_init *init_data ,char **tableau)
 		x++;
 	}
 }
-

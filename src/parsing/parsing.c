@@ -6,19 +6,17 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 07:54:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 03:14:13 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 12:35:22 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-//TODO VERIFIER SI ON PEUT PASSER PORTE (condition en plus pour qu'on puisse marcher dessus) [x]
-
-bool check_extension_map(t_init *init_data)
+bool	check_extension_map(t_init *init_data)
 {
-	char *map_name;
-	int fd;
-	int i;
+	char	*map_name;
+	int		fd;
+	int		i;
 
 	map_name = init_data->map_name;
 	fd = init_data->fd;
@@ -32,12 +30,13 @@ bool check_extension_map(t_init *init_data)
 		return (true);
 	}
 	else
-		return(false);
+		return (false);
 }
-bool check_map_is_rectangular(t_init *init_data)
+
+bool	check_map_is_rectangular(t_init *init_data)
 {
-	char **tab;
-	int i;
+	char	**tab;
+	int		i;
 
 	tab = init_data->tab;
 	if (tab)
@@ -54,9 +53,10 @@ bool check_map_is_rectangular(t_init *init_data)
 	}
 	return (true);
 }
-bool check_map_is_not_empty(t_init *init_data)
+
+bool	check_map_is_not_empty(t_init *init_data)
 {
-	char **map;
+	char	**map;
 
 	map = init_data->tab;
 	if (map == NULL || map[0] == 0 || map[0][0] == '\n')
@@ -64,18 +64,19 @@ bool check_map_is_not_empty(t_init *init_data)
 	else
 		return (true);
 }
-bool check_map_only_charset(t_init *init_data)
+
+bool	check_map_only_charset(t_init *init_data)
 {
-	char **tableau;
-	int i;
-	int k;
+	char	**tableau;
+	int		i;
+	int		k;
 
 	tableau = init_data->tab;
 	i = 0;
 	while (tableau[i] != 0)
 	{
 		k = 0;
-		while(tableau[i][k] != '\0')
+		while (tableau[i][k] != '\0')
 		{
 			if (ft_ischarnum(tableau[i][k]) == 0)
 				return (false);
@@ -89,32 +90,25 @@ bool check_map_only_charset(t_init *init_data)
 	return (true);
 }
 
-bool map_is_enclosed_by_wall(t_init *init_data, int x_max, int y_max)
+bool	map_is_enclosed_by_wall(t_init *init_data)
 {
-	char **tableau = init_data->tab;
-	bool is_wall;
-	int x;
-	int y;
+	char	**tableau;
+	bool	is_wall;
+	int		x;
+	int		y;
 
 	x = 0;
 	y = 0;
+	tableau = init_data->tab;
 	is_wall = true;
-	while (tableau[x][y] != '\0')
-		y++;
-	y_max = y;
-	y = 0;
-	while(tableau[x] != 0)
-		x++;
-	x_max = x;
-	x = 0;
-	is_wall = check_rectangle_length(is_wall, tableau, x, y, y_max);
+	is_wall = check_rectangle_length(is_wall, tableau, y, init_data->y_max);
 	if (is_wall == false)
 		;
 	else
-		is_wall = check_rectangle_width(is_wall, tableau, x, y, x_max);
+		is_wall = check_rectangle_width(is_wall, tableau,
+				x, init_data->x_max);
 	if (is_wall == true)
 		return (true);
 	else
 		return (false);
 }
-

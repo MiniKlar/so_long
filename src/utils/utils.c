@@ -6,20 +6,20 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:59:31 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 04:04:23 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 07:36:18 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-//TODO REVOIR FILL TAB POUR REMPLIR FLOOD FILL;
+//TODO REVOIR FILL TAB POUR REMPLIR FLOOD FILL [v]
+// ft_strnstr()
 
-bool fill_tab(t_init *init_data)
+bool	fill_tab(t_init *init_data)
 {
-	char *line;
-	char *map_in_line;
-	char *temp;
-	// char *tmp;
+	char	*line;
+	char	*map_in_line;
+	char	*temp;
 
 	line = get_next_line(init_data->fd);
 	if (!line)
@@ -35,20 +35,20 @@ bool fill_tab(t_init *init_data)
 		free(line);
 		line = get_next_line(init_data->fd);
 	}
-	// tmp = map_in_line;
-	// ft_strnstr()
 	init_data->tab = ft_split(map_in_line, '\n');
 	init_data->flood_tab = ft_split(map_in_line, '\n');
 	free(map_in_line);
 	return (true);
 }
-bool check_if_wall(char c)
+
+bool	check_if_wall(char c)
 {
 	if (c == '1')
 		return (true);
 	else
 		return (false);
 }
+
 int	ft_ischarnum(int c)
 {
 	if (c == 'P' || c == 'E' || c == 'C' || ft_isdigit(c))
@@ -56,14 +56,14 @@ int	ft_ischarnum(int c)
 	else
 		return (0);
 }
-int ft_search_C_instances(t_struct *all_struct, int x, int y)
+
+int	ft_search_items_instances(t_struct *all_struct, int x, int y)
 {
 	while (all_struct->first_node->node != NULL)
 	{
-		if (all_struct->first_node->node->x == x && all_struct->first_node->node->y == y)
-		{
+		if (all_struct->first_node->node->x == x && all_struct->first_node
+			->node->y == y)
 			return (all_struct->first_node->node->index);
-		}
 		else
 			all_struct->first_node->node = all_struct->first_node->node->next;
 	}

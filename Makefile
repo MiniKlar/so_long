@@ -22,8 +22,10 @@ SRC 		= main.c \
 			./src/utils/utils.c \
 			./src/parsing/flood_fill.c \
 			./src/handler/key_handler.c \
+			./src/handler/move_player.c \
 			./src/init/init.c \
 			./src/init/init_2.c \
+			./src/init/init_mlx.c \
 
 OBJ 		= $(SRC:.c=.o)
 
