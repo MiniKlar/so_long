@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:59:31 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/15 01:49:25 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 03:10:41 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //TODO REVOIR FILL TAB POUR REMPLIR FLOOD FILL;
 
-void fill_tab(t_init *init_data)
+bool fill_tab(t_init *init_data)
 {
 	char *line;
 	char *map_in_line;
@@ -23,21 +23,14 @@ void fill_tab(t_init *init_data)
 
 	line = get_next_line(init_data->fd);
 	if (!line)
-	{
-		printf("Error\nMap is empty\n");
-		free_parsing(init_data);
-		exit(EXIT_FAILURE);
-	}
+		return (free(line), false);
 	map_in_line = ft_strdup("");
 	while (line)
 	{
 		temp = map_in_line;
 		map_in_line = ft_strjoin(map_in_line, line);
 		if (!map_in_line)
-		{
-			free_parsing(init_data);
-			exit(EXIT_FAILURE);
-		}
+			return (free(map_in_line), free(line), false);
 		free(temp);
 		free(line);
 		line = get_next_line(init_data->fd);
@@ -46,7 +39,7 @@ void fill_tab(t_init *init_data)
 	init_data->tab = ft_split(tmp, '\n');
 	init_data->flood_tab = ft_split(map_in_line, '\n');
 	free(tmp);
-	//free(map_in_line);
+	return (true);
 }
 bool check_if_wall(char c)
 {
@@ -61,4 +54,17 @@ int	ft_ischarnum(int c)
 		return (1);
 	else
 		return (0);
+}
+int ft_search_C_instances(t_struct *all_struct, int x, int y)
+{
+	while (all_struct->first_node->node != NULL)
+	{
+		if (all_struct->first_node->node->x == x && all_struct->first_node->node->y == y)
+		{
+			return (all_struct->first_node->node->index);
+		}
+		else
+			all_struct->first_node->node = all_struct->first_node->node->next;
+	}
+	return (0);
 }

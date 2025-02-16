@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/15 06:57:35 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 02:30:45 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,25 @@
 #include <math.h>
 #include <stdio.h>
 
+typedef struct	s_C_info
+{
+	int x;
+	int y;
+	int index;
+	void *next;
+}				t_C_info;
+
+typedef struct	List
+{
+	t_C_info	*node;
+}				list;
 
 typedef struct 	s_init
 {
+	char **flood_tab;
+	char **tab;
 	char *map_name;
 	int fd;
-	char **tab;
-	char **flood_tab;
 	int player_pos_x;
 	int player_pos_y;
 	int collectibles;
@@ -54,11 +66,6 @@ typedef struct	s_data
 	mlx_texture_t *floor;
 	mlx_texture_t *player;
 	mlx_texture_t *exit;
-	//void	*img;
-	//char	*addr;
-	//int		bits_per_pixel;
-	//int		line_length;
-	//int		endian;
 }				t_data;
 
 typedef struct	s_struct
@@ -66,6 +73,7 @@ typedef struct	s_struct
 	t_data *struct_data;
 	mlx_t *mlx;
 	t_init *struct_init;
+	list *first_node;
 }				t_struct;
 
 void close_window(mlx_key_data_t keydata, mlx_t* param);
@@ -76,7 +84,7 @@ void init_all(int argc, char **argv, t_init *init_data);
 bool check_map_is_rectangular(t_init *init_data);
 bool check_map_is_not_empty(t_init *init_data);
 t_init *init_struct(void);
-void fill_tab(t_init *init_data);
+bool fill_tab(t_init *init_data);
 void	print_map(char **map);
 void	free_map(char **map);
 void free_struct(t_struct *all_struct);
@@ -102,5 +110,9 @@ void move_player(mlx_key_data_t keydata, t_struct *all_struct, int x, int y);
 void free_mlx(t_struct *all_struct);
 void free_parsing(t_init *init_data);
 void free_all(void *param);
+void insertion(list *liste, int C_count, int x, int y);
+list	*initalisation(void);
+void free_list(list *liste);
+int ft_search_C_instances(t_struct *all_struct, int x, int y);
 
 #endif

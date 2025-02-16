@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:08:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/15 02:25:33 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 03:16:42 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,13 @@ bool flood_fill_map(t_init *init_data)
 	char **tableau;
 
 	tableau = init_data->flood_tab;
-	//printf("\n\n TOIII%c\n\n", tableau[2][5]);
 	start_position_floodfill(init_data, tableau);
 	set_next_position_floodfill(tableau, init_data);
 	tableau = flood(init_data, tableau, init_data->x, init_data->y);
-	print_map(tableau);
 	if (init_data->N_exit == init_data->exit && init_data->N_collectibles == init_data->collectibles)
 		return (true);
 	else
-	{
-		//printf("%d %d %d %d \n\n", init_data->collectibles, init_data->exit, init_data->N_exit, init_data->N_collectibles);
 		return (false);
-	}
 }
 void start_position_floodfill(t_init *init_data, char **tableau)
 {
@@ -71,8 +66,7 @@ char **set_next_position_floodfill(char **tableau, t_init *init_data)
 
 char **flood(t_init *init_data,char **tableau, int x, int y)
 {
-	//printf("\n\n|%c|\n\n", tableau[x][y]);
-    if (tableau[x][y] == 'E' || tableau[x][y] == '0' || tableau[x][y] == 'C')
+    if (tableau[x][y] == 'E' || tableau[x][y] == '0' || tableau[x][y] == 'C' || tableau[x][y] == 'P')
 	{
 		if (tableau[x][y] == 'E')
 			init_data->N_exit++;

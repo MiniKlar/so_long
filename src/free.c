@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 02:34:19 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/15 02:12:12 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/16 02:25:45 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void free_all(void *param)
 
 void free_parsing(t_init *init_data)
 {
+	if (init_data->fd > -1)
+		close(init_data->fd);
 	free_map(init_data->tab);
 	free_map(init_data->flood_tab);
 	free(init_data->map_name);
@@ -50,11 +52,11 @@ void free_struct(t_struct *all_struct)
 	mlx_delete_texture(all_struct->struct_data->wall);
 	mlx_delete_texture(all_struct->struct_data->floor);
 	free(all_struct->struct_data);
+	free_list(all_struct->first_node);
 	free(all_struct);
 }
 void free_mlx(t_struct *all_struct)
 {
-	printf("ESCAPE\n\n\n");
 	mlx_close_window(all_struct->mlx);
 	mlx_delete_image(all_struct->mlx, all_struct->struct_data->img_floor);
 	mlx_delete_image(all_struct->mlx, all_struct->struct_data->img_C4);
