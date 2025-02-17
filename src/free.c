@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 02:34:19 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 13:37:58 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/17 22:31:21 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	free_all(void *param)
 
 void	free_struct(t_struct *all_struct)
 {
-	if (all_struct->init->fd > -1)
-		close(all_struct->init->fd);
 	free_map(all_struct->init->tab);
 	free_map(all_struct->init->flood_tab);
 	free(all_struct->init->map_name);

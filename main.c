@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 01:58:48 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 12:18:50 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/17 21:51:42 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 //TODO VERIFITER RELINK MAKEFILE
 //TODO IMPLEMENTER COMPTEUR MOUVEMENT
 //TODO VOIR DISPLAY= VOIR SI MLX RENVOIE BIEN UN TRUC [v]
-//TODO CHECK MAP
+//TODO CHECK MAP si vide au dessus, en dessous et au milieu.
 
 int	main(int argc, char **argv)
 {
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 		all_struct = init_structure();
 		init_all(argc, argv, all_struct->init);
 		fill_tab(all_struct->init);
+		print_map(all_struct->init->tab);
 		check_all_parsing(all_struct);
 		all_struct->mlx = mlx_init(all_struct->init->y_max * SIZE,
 				all_struct->init->x_max * SIZE, "so_long", true);

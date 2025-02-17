@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 12:23:34 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 14:06:19 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/17 20:56:18 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	move_player_right(t_struct *all_struct, char **tab, int x, int y)
 	{
 		if (tab[x][y + 1] == 'E' && all_struct->init->n_collectibles == 0)
 			endgame(all_struct, 2);
-		else if (tab[x][y + 1] == 'E' && all_struct->init->n_collectibles == 0)
+		else if (tab[x][y + 1] == 'E' && all_struct->init->n_collectibles != 0)
 			tab[x][y] = '0';
 		else if (tab[x][y + 1] == 'C')
 		{
@@ -102,7 +102,7 @@ void	move_player_left(t_struct *all_struct, char **tab, int x, int y)
 	{
 		if (tab[x][y - 1] == 'E' && all_struct->init->n_collectibles == 0)
 			endgame(all_struct, 4);
-		else if (tab[x][y - 1] == 'E' && all_struct->init->n_collectibles == 0)
+		else if (tab[x][y - 1] == 'E' && all_struct->init->n_collectibles != 0)
 			tab[x][y] = '0';
 		else if (tab[x][y - 1] == 'C')
 		{

@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 13:53:19 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/17 22:21:50 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,5 @@ void		move_player_down(t_struct *all_struct, char **tab, int x, int y);
 void		move_player_right(t_struct *all_struct, char **tab, int x, int y);
 void		move_player_left(t_struct *all_struct, char **tab, int x, int y);
 void		endgame(t_struct *all_struct, int i);
+bool		check_map_empty_space(t_init *init_data);
 #endif

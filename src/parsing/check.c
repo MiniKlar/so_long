@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 01:54:00 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 18:59:24 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/17 22:23:46 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ void	check_all_parsing(t_struct *all_struct)
 {
 	check_parsing(all_struct);
 	check_parsing_alt(all_struct);
+	if (check_map_empty_space(all_struct->init) == false)
+	{
+		ft_putstr_fd("Error\nEMPTY SPACE IN THE MIDDLE OF THE MAP\n", 2);
+		free_struct(all_struct);
+		exit(EXIT_FAILURE);
+	}
 }
 
 void	check_parsing(t_struct *all_struct)
