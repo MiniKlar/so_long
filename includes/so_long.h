@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/17 22:21:50 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/20 00:01:59 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # define SIZE 64
+# define BUFFER_MAP_MAX 480
 
 # include "../minilibx/mlx42.h"
 # include "../LIB_C/LIB_C.h"

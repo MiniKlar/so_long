@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 01:58:48 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/17 21:51:42 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/20 00:01:28 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 //TODO VERIFIER QUE CA FREE BIEN SI ERREUR DE PNG / ERREUR DE CHEMIN [x]
 // TODO CLOSE FD [x]
 //TODO VERIFITER RELINK MAKEFILE
-//TODO IMPLEMENTER COMPTEUR MOUVEMENT
+//TODO IMPLEMENTER COMPTEUR MOUVEMENT dans le shell [x]
 //TODO VOIR DISPLAY= VOIR SI MLX RENVOIE BIEN UN TRUC [v]
-//TODO CHECK MAP si vide au dessus, en dessous et au milieu.
+//TODO CHECK MAP si vide au dessus, en dessous et au milieu. [x]
 
 int	main(int argc, char **argv)
 {

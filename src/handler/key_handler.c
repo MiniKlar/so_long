@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:56:55 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 14:11:09 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/20 00:11:37 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 
 void	move_player(mlx_key_data_t keydata, t_struct *all_struct, int x, int y)
 {
-	char		**tab;
-	int			index;
+	static int	prev_mov_counter;
 	t_C_info	*tmp;
-	static int	prev_mov_counter = 0;
+	char		**tab;
 
 	x = all_struct->init->player_pos_x;
 	y = all_struct->init->player_pos_y;
-	index = 0;
 	tab = all_struct->init->tab;
 	tmp = all_struct->first_node->node;
 	if (keydata.action != 0)
