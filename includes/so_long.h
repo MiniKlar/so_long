@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/20 00:01:59 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 03:24:17 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_init
 	char	**flood_tab;
 	char	**tab;
 	char	*map_name;
+	int		prev_mov_counter;
 	int		fd;
 	int		player_pos_x;
 	int		player_pos_y;
@@ -61,12 +62,15 @@ typedef struct s_data
 	mlx_image_t		*img_wall;
 	mlx_image_t		*img_floor;
 	mlx_image_t		*img_player;
+	mlx_image_t		*img_player_right;
 	mlx_image_t		*img_exit;
 	mlx_image_t		*img_c4;
+	mlx_image_t		*str_counter;
 	mlx_texture_t	*c4;
 	mlx_texture_t	*wall;
 	mlx_texture_t	*floor;
 	mlx_texture_t	*player;
+	mlx_texture_t	*player_right;
 	mlx_texture_t	*exit;
 }				t_data;
 
@@ -130,4 +134,7 @@ void		move_player_right(t_struct *all_struct, char **tab, int x, int y);
 void		move_player_left(t_struct *all_struct, char **tab, int x, int y);
 void		endgame(t_struct *all_struct, int i);
 bool		check_map_empty_space(t_init *init_data);
+void		counter_to_window(t_struct *all_struct);
+void		change_sprite(t_struct *all_struct);
+void		change_sprite_right(t_struct *all_struct);
 #endif

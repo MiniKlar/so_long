@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 12:23:34 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/17 20:56:18 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 03:20:59 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	move_player_down(t_struct *all_struct, char **tab, int x, int y)
 			tab[x + 1][y] = 'P';
 		}
 		all_struct->init->mov_counter++;
-		all_struct->data->img_player->instances->y += SIZE;
 		all_struct->init->player_pos_x += 1;
+		all_struct->data->img_player->instances->y += SIZE;
 	}
 }
 
@@ -90,9 +90,9 @@ void	move_player_right(t_struct *all_struct, char **tab, int x, int y)
 			tab[x][y + 1] = 'P';
 			tab[x][y] = '0';
 		}
-		all_struct->init->mov_counter++;
-		all_struct->data->img_player->instances->x += SIZE;
+		change_sprite_right(all_struct);
 		all_struct->init->player_pos_y += 1;
+		all_struct->data->img_player->instances->x += SIZE;
 	}
 }
 
@@ -118,9 +118,9 @@ void	move_player_left(t_struct *all_struct, char **tab, int x, int y)
 			tab[x][y - 1] = 'P';
 			tab[x][y] = '0';
 		}
-		all_struct->init->mov_counter++;
-		all_struct->data->img_player->instances->x -= SIZE;
+		change_sprite(all_struct);
 		all_struct->init->player_pos_y -= 1;
+		all_struct->data->img_player->instances->x -= SIZE;
 	}
 }
 
@@ -135,6 +135,6 @@ void	endgame(t_struct *all_struct, int i)
 	else
 		all_struct->data->img_player->instances->x -= SIZE;
 	all_struct->init->mov_counter++;
-	ft_printf("%d\n", all_struct->init->mov_counter);
+	counter_to_window(all_struct);
 	free_all(all_struct);
 }

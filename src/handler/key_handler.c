@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:56:55 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/20 00:11:37 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 03:16:06 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 
 void	move_player(mlx_key_data_t keydata, t_struct *all_struct, int x, int y)
 {
-	static int	prev_mov_counter;
 	t_C_info	*tmp;
 	char		**tab;
 
@@ -33,7 +32,7 @@ void	move_player(mlx_key_data_t keydata, t_struct *all_struct, int x, int y)
 	y = all_struct->init->player_pos_y;
 	tab = all_struct->init->tab;
 	tmp = all_struct->first_node->node;
-	if (keydata.action != 0)
+	if (keydata.action != MLX_RELEASE)
 	{
 		if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 			move_player_up(all_struct, tab, x, y);
@@ -44,10 +43,7 @@ void	move_player(mlx_key_data_t keydata, t_struct *all_struct, int x, int y)
 		else if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
 			move_player_left(all_struct, tab, x, y);
 		all_struct->first_node->node = tmp;
-		if (all_struct->init->mov_counter > prev_mov_counter)
-		{
-			ft_printf("%d\n", all_struct->init->mov_counter);
-			prev_mov_counter = all_struct->init->mov_counter;
-		}
+		if (all_struct->init->mov_counter > all_struct->init->prev_mov_counter)
+			counter_to_window(all_struct);
 	}
 }

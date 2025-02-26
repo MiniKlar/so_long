@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:33:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 13:53:38 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 02:20:14 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ t_data	*init_game_data(void)
 	new_node->exit = NULL;
 	new_node->floor = NULL;
 	new_node->player = NULL;
+	new_node->player_right = NULL;
 	new_node->wall = NULL;
 	new_node->img_c4 = NULL;
 	new_node->img_exit = NULL;
 	new_node->img_floor = NULL;
 	new_node->img_player = NULL;
+	new_node->img_player_right = NULL;
 	new_node->img_wall = NULL;
+	new_node->str_counter = NULL;
 	return (new_node);
 }
 
@@ -66,6 +69,7 @@ void	init_all(int argc, char **argv, t_init *init_data)
 	init_data->items_collect = 0;
 	init_data->item_counter = 0;
 	init_data->mov_counter = 0;
+	init_data->prev_mov_counter = 0;
 }
 
 void	init_map_name(int argc, char **argv, t_init *init_data)

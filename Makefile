@@ -26,6 +26,7 @@ SRC 		= main.c \
 			./src/init/init.c \
 			./src/init/init_2.c \
 			./src/init/init_mlx.c \
+			./src/handler/change_sprite.c \
 
 OBJ 		= $(SRC:.c=.o)
 

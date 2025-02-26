@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 06:31:26 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 13:37:58 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 03:10:27 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	init_texture_image(t_struct *all_struct)
 	all_struct->data->exit = mlx_load_png("./src/img/B.png");
 	all_struct->data->img_exit = mlx_texture_to_image(all_struct->mlx,
 			all_struct->data->exit);
-	all_struct->data->player = mlx_load_png("./src/img/player.png");
+	all_struct->data->player = mlx_load_png("./src/img/player_left.png");
 	all_struct->data->img_player = mlx_texture_to_image(all_struct->mlx,
 			all_struct->data->player);
-	all_struct->data->c4 = mlx_load_png("./src/img/C4_final_1.png");
+	all_struct->data->player_right = mlx_load_png("./src/img/player_right.png");
+	all_struct->data->c4 = mlx_load_png("./src/img/C4_final_red.png");
 	all_struct->data->img_c4 = mlx_texture_to_image(all_struct->mlx,
 			all_struct->data->c4);
 }
