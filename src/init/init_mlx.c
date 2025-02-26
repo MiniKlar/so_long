@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 06:31:26 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/26 03:10:27 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 14:06:04 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_texture_image(t_struct *all_struct)
 	all_struct->data->img_player = mlx_texture_to_image(all_struct->mlx,
 			all_struct->data->player);
 	all_struct->data->player_right = mlx_load_png("./src/img/player_right.png");
+	all_struct->data->img_player_right = mlx_texture_to_image(all_struct->mlx, all_struct->data->player_right);
 	all_struct->data->c4 = mlx_load_png("./src/img/C4_final_red.png");
 	all_struct->data->img_c4 = mlx_texture_to_image(all_struct->mlx,
 			all_struct->data->c4);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 12:23:34 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/26 03:20:59 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 14:55:13 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	move_player_right(t_struct *all_struct, char **tab, int x, int y)
 		}
 		change_sprite_right(all_struct);
 		all_struct->init->player_pos_y += 1;
-		all_struct->data->img_player->instances->x += SIZE;
+		all_struct->data->img_player_right->instances->x += SIZE;
 	}
 }
 

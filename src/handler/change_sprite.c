@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_sprite.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 02:56:35 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/26 03:37:02 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 14:58:45 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	change_sprite(t_struct *all_struct)
 	int z;
 
 	all_struct->init->mov_counter++;
-	x = all_struct->data->img_player->instances->x;
-	y = all_struct->data->img_player->instances->y;
-	z = all_struct->data->img_player->instances->z;
-	mlx_delete_image(all_struct->mlx, all_struct->data->img_player);
-	all_struct->data->img_player = mlx_texture_to_image(all_struct->mlx,
-		all_struct->data->player);
-	mlx_set_instance_depth(all_struct->data->img_player->instances,
-			3);
-	all_struct->data->img_player->instances->x = x;
-	all_struct->data->img_player->instances->x = y;
-	all_struct->data->img_player->instances->x = z;
+	if (all_struct->data->img_player->instances->enabled == false)
+	{
+		all_struct->data->img_player_right->instances->enabled = false;
+		x = all_struct->data->img_player_right->instances->x;
+		y = all_struct->data->img_player_right->instances->y;
+		z = all_struct->data->img_player_right->instances->z;
+		all_struct->data->img_player->instances->x = x;
+		all_struct->data->img_player->instances->x = y;
+		all_struct->data->img_player->instances->x = z;
+		all_struct->data->img_player->instances->enabled = true;
+	}
 }
 
 void	change_sprite_right(t_struct *all_struct)
@@ -39,15 +39,15 @@ void	change_sprite_right(t_struct *all_struct)
 	int z;
 
 	all_struct->init->mov_counter++;
-	x = all_struct->data->img_player->instances->x;
-	y = all_struct->data->img_player->instances->y;
-	z = all_struct->data->img_player->instances->z;
-	mlx_delete_image(all_struct->mlx, all_struct->data->img_player);
-	all_struct->data->img_player = mlx_texture_to_image(all_struct->mlx,
-		all_struct->data->player_right);
-	//mlx_set_instance_depth(all_struct->data->img_player->instances,
-			//3);
-	//all_struct->data->img_player->instances->x = x;
-	//all_struct->data->img_player->instances->x = y;
-	//all_struct->data->img_player->instances->x = z;
+	if (all_struct->data->img_player_right->instances->enabled == false)
+	{
+		x = all_struct->data->img_player->instances->x;
+		y = all_struct->data->img_player->instances->y;
+		z = all_struct->data->img_player->instances->z;
+		all_struct->data->img_player->instances->enabled = false;
+		all_struct->data->img_player_right->instances->x = x;
+		all_struct->data->img_player_right->instances->x = y;
+		all_struct->data->img_player_right->instances->x = z;
+		all_struct->data->img_player_right->instances->enabled = true;
+	}
 }

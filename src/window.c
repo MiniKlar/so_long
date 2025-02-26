@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 06:01:04 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/26 02:25:01 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/26 14:56:24 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	put_wall_player_image(t_struct *all_struct, char **tableau,
 			all_struct->data->img_player, y * SIZE, x * SIZE);
 		mlx_set_instance_depth(all_struct->data->img_player->instances,
 			3);
+		mlx_image_to_window(all_struct->mlx,
+				all_struct->data->img_player_right, y * SIZE, x * SIZE);
+		mlx_set_instance_depth(all_struct->data->img_player_right->instances,
+			3);
+		all_struct->data->img_player_right->instances->enabled = false;
 	}
 }
 
