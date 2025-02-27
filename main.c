@@ -6,18 +6,11 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 01:58:48 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/27 03:24:39 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/27 06:36:11 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/so_long.h"
-
-//TODO VERIFIER QUE CA FREE BIEN SI ERREUR DE PNG / ERREUR DE CHEMIN [x]
-// TODO CLOSE FD [x]
-//TODO VERIFITER RELINK MAKEFILE
-//TODO IMPLEMENTER COMPTEUR MOUVEMENT dans le shell [x]
-//TODO VOIR DISPLAY= VOIR SI MLX RENVOIE BIEN UN TRUC [v]
-//TODO CHECK MAP si vide au dessus, en dessous et au milieu. [x]
 
 int	main(int argc, char **argv)
 {
