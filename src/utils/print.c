@@ -6,11 +6,11 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:44:14 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/25 23:45:37 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/27 04:43:18 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void	print_map(char **map)
 {

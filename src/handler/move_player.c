@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 12:23:34 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/26 14:55:13 by miniklar         ###   ########.fr       */
+/*   Updated: 2025/02/27 04:42:34 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	move_player_up(t_struct *all_struct, char **tab, int x, int y)
 {
-	if (tab[x - 1][y] == '0' || tab[x - 1][y] == 'E' || tab[x - 1][y] == 'C')
+	if (tab[x - 1][y] == '0' || tab[x - 1][y] == 'E' || tab[x - 1][y] == 'C'
+		|| tab[x - 1][y] == 'T')
 	{
-		if (tab[x - 1][y] == 'E' && all_struct->init->n_collectibles == 0)
-			endgame(all_struct, 0);
+		if ((tab[x - 1][y] == 'E' && all_struct->init->n_collectibles == 0)
+			|| tab[x - 1][y] == 'T')
+			endgame(all_struct, 0, x - 1, y);
 		else if (tab[x - 1][y] == 'E' && all_struct->init->n_collectibles != 0)
 			tab[x][y] = '0';
 		else if (tab[x - 1][y] == '0' && tab[x][y] != 'E')
@@ -34,18 +36,18 @@ void	move_player_up(t_struct *all_struct, char **tab, int x, int y)
 			if (tab[x][y] != 'E')
 				tab[x][y] = '0';
 		}
-		all_struct->init->mov_counter++;
-		all_struct->init->player_pos_x -= 1;
-		all_struct->data->img_player->instances->y -= SIZE;
+		move_sprite(all_struct, -1);
 	}
 }
 
 void	move_player_down(t_struct *all_struct, char **tab, int x, int y)
 {
-	if (tab[x + 1][y] == '0' || tab[x + 1][y] == 'E' || tab[x + 1][y] == 'C')
+	if (tab[x + 1][y] == '0' || tab[x + 1][y] == 'E' || tab[x + 1][y] == 'C'
+		|| tab[x + 1][y] == 'T')
 	{
-		if (tab[x + 1][y] == 'E' && all_struct->init->n_collectibles == 0)
-			endgame(all_struct, 1);
+		if ((tab[x + 1][y] == 'E' && all_struct->init->n_collectibles == 0)
+			|| tab[x + 1][y] == 'T')
+			endgame(all_struct, 1, x + 1, y);
 		else if (tab[x + 1][y] == 'E' && all_struct->init->n_collectibles != 0)
 			tab[x][y] = '0';
 		else if (tab[x + 1][y] == 'C')
@@ -62,18 +64,18 @@ void	move_player_down(t_struct *all_struct, char **tab, int x, int y)
 			tab[x][y] = '0';
 			tab[x + 1][y] = 'P';
 		}
-		all_struct->init->mov_counter++;
-		all_struct->init->player_pos_x += 1;
-		all_struct->data->img_player->instances->y += SIZE;
+		move_sprite(all_struct, 1);
 	}
 }
 
 void	move_player_right(t_struct *all_struct, char **tab, int x, int y)
 {
-	if (tab[x][y + 1] == '0' || tab[x][y + 1] == 'E' || tab[x][y + 1] == 'C')
+	if (tab[x][y + 1] == '0' || tab[x][y + 1] == 'E' || tab[x][y + 1] == 'C'
+		|| tab[x][y + 1] == 'T')
 	{
-		if (tab[x][y + 1] == 'E' && all_struct->init->n_collectibles == 0)
-			endgame(all_struct, 2);
+		if ((tab[x][y + 1] == 'E' && all_struct->init->n_collectibles == 0)
+			|| tab[x][y + 1] == 'T')
+			endgame(all_struct, 2, x, y + 1);
 		else if (tab[x][y + 1] == 'E' && all_struct->init->n_collectibles != 0)
 			tab[x][y] = '0';
 		else if (tab[x][y + 1] == 'C')
@@ -91,17 +93,17 @@ void	move_player_right(t_struct *all_struct, char **tab, int x, int y)
 			tab[x][y] = '0';
 		}
 		change_sprite_right(all_struct);
-		all_struct->init->player_pos_y += 1;
-		all_struct->data->img_player_right->instances->x += SIZE;
 	}
 }
 
 void	move_player_left(t_struct *all_struct, char **tab, int x, int y)
 {
-	if (tab[x][y - 1] == '0' || tab[x][y - 1] == 'E' || tab[x][y - 1] == 'C')
+	if (tab[x][y - 1] == '0' || tab[x][y - 1] == 'E' || tab[x][y - 1] == 'C'
+		|| tab[x][y - 1] == 'T')
 	{
-		if (tab[x][y - 1] == 'E' && all_struct->init->n_collectibles == 0)
-			endgame(all_struct, 4);
+		if ((tab[x][y - 1] == 'E' && all_struct->init->n_collectibles == 0)
+			|| tab[x][y - 1] == 'T')
+			endgame(all_struct, 4, x, y - 1);
 		else if (tab[x][y - 1] == 'E' && all_struct->init->n_collectibles != 0)
 			tab[x][y] = '0';
 		else if (tab[x][y - 1] == 'C')
@@ -119,12 +121,10 @@ void	move_player_left(t_struct *all_struct, char **tab, int x, int y)
 			tab[x][y] = '0';
 		}
 		change_sprite(all_struct);
-		all_struct->init->player_pos_y -= 1;
-		all_struct->data->img_player->instances->x -= SIZE;
 	}
 }
 
-void	endgame(t_struct *all_struct, int i)
+void	endgame(t_struct *all_struct, int i, int x, int y)
 {
 	if (i == 0)
 		all_struct->data->img_player->instances->y -= SIZE;
@@ -136,5 +136,9 @@ void	endgame(t_struct *all_struct, int i)
 		all_struct->data->img_player->instances->x -= SIZE;
 	all_struct->init->mov_counter++;
 	counter_to_window(all_struct);
+	if (all_struct->init->tab[x][y] == 'T')
+		ft_printf("You have hit an enemy, try again!\n");
+	else
+		ft_printf("IT'S A WIN!\n");
 	free_all(all_struct);
 }

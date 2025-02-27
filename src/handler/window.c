@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 06:01:04 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/26 14:56:24 by miniklar         ###   ########.fr       */
+/*   Updated: 2025/02/27 04:43:01 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void	put_wall_player_image(t_struct *all_struct, char **tableau,
 	int x, int y)
@@ -25,10 +25,18 @@ void	put_wall_player_image(t_struct *all_struct, char **tableau,
 		mlx_set_instance_depth(all_struct->data->img_player->instances,
 			3);
 		mlx_image_to_window(all_struct->mlx,
-				all_struct->data->img_player_right, y * SIZE, x * SIZE);
+			all_struct->data->img_player_right, y * SIZE, x * SIZE);
 		mlx_set_instance_depth(all_struct->data->img_player_right->instances,
 			3);
 		all_struct->data->img_player_right->instances->enabled = false;
+	}
+	if (tableau[x][y] == 'T')
+	{
+		mlx_image_to_window(all_struct->mlx,
+			all_struct->data->img_ct, y * SIZE, x * SIZE);
+		mlx_set_instance_depth(all_struct->data->img_ct->instances,
+			3);
+		all_struct->data->img_ct->instances->enabled = true;
 	}
 }
 

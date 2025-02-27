@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:08:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/16 13:49:08 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:55:53 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@ char	**set_next_position_floodfill(char **tableau, t_init *init_data)
 	x = init_data->x;
 	y = init_data->y;
 	if (tableau[x + 1][y] == '0' || tableau[x + 1][y] == 'E'
-		|| tableau[x + 1][y] == 'C')
+		|| tableau[x + 1][y] == 'C' || tableau[x + 1][y] == 'T')
 		init_data->x++;
 	else if (tableau[x - 1][y] == '0' || tableau[x - 1][y] == 'E'
-		|| tableau[x - 1][y] == 'C')
+		|| tableau[x - 1][y] == 'C' || tableau[x - 1][y] == 'T')
 		init_data->x--;
 	else if (tableau[x][y + 1] == '0' || tableau[x][y + 1] == 'E'
-		|| tableau[x][y + 1] == 'C')
+		|| tableau[x][y + 1] == 'C' || tableau[x][y + 1] == 'T')
 		init_data->y++;
 	else if (tableau[x][y - 1] == '0' || tableau[x][y - 1] == 'E'
-		|| tableau[x][y - 1] == 'C')
+		|| tableau[x][y - 1] == 'C' || tableau[x][y - 1] == 'T')
 		init_data->y--;
 	return (tableau);
 }

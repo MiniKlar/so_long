@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:33:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/26 02:20:14 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/27 03:26:39 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ t_data	*init_game_data(void)
 	new_node->player = NULL;
 	new_node->player_right = NULL;
 	new_node->wall = NULL;
+	new_node->ct = NULL;
 	new_node->img_c4 = NULL;
 	new_node->img_exit = NULL;
 	new_node->img_floor = NULL;
 	new_node->img_player = NULL;
 	new_node->img_player_right = NULL;
 	new_node->img_wall = NULL;
+	new_node->img_ct = NULL;
 	new_node->str_counter = NULL;
 	return (new_node);
 }

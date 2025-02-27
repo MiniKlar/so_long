@@ -7,18 +7,20 @@ CLONE 		= git clone --depth=1
 CFLAGS 		+= -Wall -Wextra -Werror -ggdb
 CLINKS		= -ldl -lglfw -pthread -lm
 
-MLX			= minilibx
+MLX			= MLX42
 LIBMLX 		= $(MLX)/libmlx42.a
 
 LIB_C		= LIB_C
 
+SUBMODULES  = SUBMODULES
+
 SRC 		= main.c \
-			./src/window.c \
+			./src/handler/window.c \
 			./src/parsing/parsing.c \
 			./src/parsing/parsing_1.c \
 			./src/parsing/check.c \
-			./src/free.c \
-			./src/print.c \
+			./src/parsing/free.c \
+			./src/utils/print.c \
 			./src/utils/utils.c \
 			./src/parsing/flood_fill.c \
 			./src/handler/key_handler.c \
@@ -34,18 +36,24 @@ all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(LIBMLX) $(LIB_C) $(OBJ)
+$(NAME): $(SUBMODULES) $(MLX) $(LIBMLX) $(LIB_C) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) ./LIB_C/LIB_C.a -o $(NAME)  $(LIBMLX) $(CLINKS)
 
 $(LIBMLX): $(MLX)
 	$(MAKE) -C $(MLX)
+	cd LIB_C
+	$(MAKE) -C $(LIB_C)
 
-$(MLX):
-	$(CLONE) git@github.com:MiniKlar/MLX42.git $(MLX)
+$(MLX): $(SUBMODULES)
 	cmake $(MLX) -B $(MLX)
 
 $(LIB_C):
-	$(CLONE) git@github.com:MiniKlar/LIB_C.git LIB_C; cd /home/lomont/42_miniklar/so_long/LIB_C; make; make clean
+	cd LIB_C
+	$(MAKE) -C $(LIB_C)
+
+$(SUBMODULES):
+	git submodule init
+	git submodule update
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -53,6 +61,7 @@ $(LIB_C):
 clean:
 	$(RM) $(OBJ)
 	$(MAKE) clean -C $(MLX)
+	$(MAKE) clean -C $(LIB_C)
 
 fclean: clean
 	$(RM) -rf $(LIB_C)

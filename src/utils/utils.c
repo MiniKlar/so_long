@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:59:31 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/19 23:59:56 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:40:26 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	check_if_wall(char c)
 
 int	ft_ischarnum(int c)
 {
-	if (c == 'P' || c == 'E' || c == 'C' || ft_isdigit(c))
+	if (c == 'P' || c == 'E' || c == 'C' || c == 'T' || ft_isdigit(c))
 		return (1);
 	else
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/26 03:24:17 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/27 05:57:57 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define SIZE 64
 # define BUFFER_MAP_MAX 480
 
-# include "../minilibx/mlx42.h"
+# include "../MLX42/mlx42.h"
 # include "../LIB_C/LIB_C.h"
 # include <math.h>
 # include <stdio.h>
@@ -65,6 +65,7 @@ typedef struct s_data
 	mlx_image_t		*img_player_right;
 	mlx_image_t		*img_exit;
 	mlx_image_t		*img_c4;
+	mlx_image_t		*img_ct;
 	mlx_image_t		*str_counter;
 	mlx_texture_t	*c4;
 	mlx_texture_t	*wall;
@@ -72,6 +73,7 @@ typedef struct s_data
 	mlx_texture_t	*player;
 	mlx_texture_t	*player_right;
 	mlx_texture_t	*exit;
+	mlx_texture_t	*ct;
 }				t_data;
 
 typedef struct s_struct
@@ -132,9 +134,10 @@ void		move_player_up(t_struct *all_struct, char **tab, int x, int y);
 void		move_player_down(t_struct *all_struct, char **tab, int x, int y);
 void		move_player_right(t_struct *all_struct, char **tab, int x, int y);
 void		move_player_left(t_struct *all_struct, char **tab, int x, int y);
-void		endgame(t_struct *all_struct, int i);
+void		endgame(t_struct *all_struct, int i, int x, int y);
 bool		check_map_empty_space(t_init *init_data);
 void		counter_to_window(t_struct *all_struct);
 void		change_sprite(t_struct *all_struct);
 void		change_sprite_right(t_struct *all_struct);
+void		move_sprite(t_struct *all_struct, int x);
 #endif
