@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 06:01:04 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/27 04:43:01 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/28 01:43:17 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ void	put_exit_items_image(t_struct *all_struct, char **tableau, int x, int y)
 		}
 		else
 			insertion(all_struct->first_node, *item_counter, x, y);
-		mlx_image_to_window(all_struct->mlx, all_struct->data->img_c4,
-			y * SIZE, x * SIZE);
-		mlx_set_instance_depth(&all_struct->data->img_c4
-			->instances[*item_counter], 2);
+		init_c4(all_struct, x, y);
 		all_struct->init->item_counter++;
 	}
 }
@@ -111,4 +108,16 @@ void	put_image_to_window(t_struct *all_struct)
 		}
 		x++;
 	}
+}
+void	init_c4(t_struct *all_struct, int x, int y)
+{
+	mlx_image_to_window(all_struct->mlx, all_struct->data->img_c4,
+		y * SIZE, x * SIZE);
+	mlx_set_instance_depth(&all_struct->data->img_c4
+		->instances[all_struct->init->item_counter], 2);
+	mlx_image_to_window(all_struct->mlx, all_struct->data->img_c4_red,
+		y * SIZE, x * SIZE);
+	mlx_set_instance_depth(&all_struct->data->img_c4_red
+		->instances[all_struct->init->item_counter], 2);
+	all_struct->data->img_c4_red->instances[all_struct->init->item_counter].enabled = false;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 02:34:19 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/27 04:43:12 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/28 01:36:42 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	free_mlx(t_struct *all_struct)
 	mlx_close_window(all_struct->mlx);
 	mlx_delete_image(all_struct->mlx, all_struct->data->img_floor);
 	mlx_delete_image(all_struct->mlx, all_struct->data->img_c4);
+	mlx_delete_image(all_struct->mlx, all_struct->data->img_c4_red);
 	mlx_delete_image(all_struct->mlx, all_struct->data->img_exit);
 	mlx_delete_image(all_struct->mlx, all_struct->data->img_player);
 	mlx_delete_image(all_struct->mlx, all_struct->data->img_player_right);
@@ -72,6 +73,7 @@ void	free_mlx(t_struct *all_struct)
 	mlx_delete_image(all_struct->mlx, all_struct->data->img_ct);
 	mlx_delete_image(all_struct->mlx, all_struct->data->str_counter);
 	mlx_delete_texture(all_struct->data->c4);
+	mlx_delete_texture(all_struct->data->c4_red);
 	mlx_delete_texture(all_struct->data->exit);
 	mlx_delete_texture(all_struct->data->player_right);
 	mlx_delete_texture(all_struct->data->player);

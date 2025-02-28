@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 01:58:48 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/27 06:36:11 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/28 01:29:13 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 		init_texture_image(all_struct);
 		put_image_to_window(all_struct);
 		mlx_key_hook(all_struct->mlx, key_handler, all_struct);
+		mlx_loop_hook(all_struct->mlx, anime_sprite, all_struct);
 		mlx_loop(all_struct->mlx);
 		free_all(all_struct);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/27 05:57:57 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/28 01:43:32 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_init
 	int		y_max;
 	int		item_counter;
 	int		mov_counter;
+	int		sprite_anim;
 }				t_init;
 
 typedef struct s_data
@@ -65,9 +66,11 @@ typedef struct s_data
 	mlx_image_t		*img_player_right;
 	mlx_image_t		*img_exit;
 	mlx_image_t		*img_c4;
+	mlx_image_t		*img_c4_red;
 	mlx_image_t		*img_ct;
 	mlx_image_t		*str_counter;
 	mlx_texture_t	*c4;
+	mlx_texture_t	*c4_red;
 	mlx_texture_t	*wall;
 	mlx_texture_t	*floor;
 	mlx_texture_t	*player;
@@ -140,4 +143,7 @@ void		counter_to_window(t_struct *all_struct);
 void		change_sprite(t_struct *all_struct);
 void		change_sprite_right(t_struct *all_struct);
 void		move_sprite(t_struct *all_struct, int x);
+void		anime_sprite(void* param);
+void		init_c4(t_struct *all_struct, int x, int y);
+
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:33:12 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/27 03:26:39 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/28 01:03:19 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_data	*init_game_data(void)
 	if (!new_node)
 		return (NULL);
 	new_node->c4 = NULL;
+	new_node->c4_red = NULL;
 	new_node->exit = NULL;
 	new_node->floor = NULL;
 	new_node->player = NULL;
@@ -43,6 +44,7 @@ t_data	*init_game_data(void)
 	new_node->wall = NULL;
 	new_node->ct = NULL;
 	new_node->img_c4 = NULL;
+	new_node->img_c4_red = NULL;
 	new_node->img_exit = NULL;
 	new_node->img_floor = NULL;
 	new_node->img_player = NULL;
@@ -72,6 +74,7 @@ void	init_all(int argc, char **argv, t_init *init_data)
 	init_data->item_counter = 0;
 	init_data->mov_counter = 0;
 	init_data->prev_mov_counter = 0;
+	init_data->sprite_anim = 0;
 }
 
 void	init_map_name(int argc, char **argv, t_init *init_data)
