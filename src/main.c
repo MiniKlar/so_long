@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 01:58:48 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/28 01:29:13 by miniklar         ###   ########.fr       */
+/*   Updated: 2025/02/28 20:50:02 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
+#include "../includes/so_long.h"
 
 int	main(int argc, char **argv)
 {

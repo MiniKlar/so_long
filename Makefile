@@ -14,7 +14,7 @@ LIBMLX 			= $(MLX)/libmlx42.a
 LIB_C_GIT_URL 	= git@github.com:MiniKlar/LIB_C.git
 LIB_C			= LIB_C
 
-SRC 			= main.c \
+SRC 			= ./src/main.c \
 				./src/handler/window.c \
 				./src/parsing/parsing.c \
 				./src/parsing/parsing_1.c \
