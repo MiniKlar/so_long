@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/28 21:05:52 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/28 21:32:22 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # ifndef BUFFER_MAP_MAX
-#  define BUFFER_MAP_MAX 480
+#  define BUFFER_MAP_MAX 496
 # endif
 
 # include "../MLX42/mlx42.h"

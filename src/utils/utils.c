@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 20:59:31 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/27 01:40:26 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/28 21:35:22 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	check_map_empty_space(t_init *init_data)
 	{
 		buffer = malloc(sizeof(char) * BUFFER_MAP_MAX);
 		b_read = read(fd, buffer, BUFFER_MAP_MAX);
-		buffer[b_read] = '\0';
+		buffer[b_read - 1] = '\0';
 		while (b_read != -1 && buffer[i] != '\0')
 		{
 			if ((buffer[i] == '\n' && buffer[i + 1] == '\n')
