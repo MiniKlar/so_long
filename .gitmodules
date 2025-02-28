@@ -1,6 +1,0 @@
-[submodule "LIB_C"]
-	path = LIB_C
-	url = git@github.com:MiniKlar/LIB_C.git
-[submodule "MLX42"]
-	path = MLX42
-	url = git@github.com:MiniKlar/MLX42.git
