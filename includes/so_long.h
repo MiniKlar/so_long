@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 03:42:07 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/28 01:43:32 by miniklar         ###   ########.fr       */
+/*   Updated: 2025/02/28 20:13:42 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define SIZE 64
-# define BUFFER_MAP_MAX 480
+# ifndef SIZE
+#  define SIZE 64
+# endif
+
+# ifndef BUFFER_MAP_MAX
+#  define BUFFER_MAP_MAX 480
+# endif
 
 # include "../MLX42/mlx42.h"
 # include "../LIB_C/LIB_C.h"
@@ -143,7 +148,8 @@ void		counter_to_window(t_struct *all_struct);
 void		change_sprite(t_struct *all_struct);
 void		change_sprite_right(t_struct *all_struct);
 void		move_sprite(t_struct *all_struct, int x);
-void		anime_sprite(void* param);
+void		anime_sprite(void *param);
 void		init_c4(t_struct *all_struct, int x, int y);
+void		remove_items(t_struct *all_struct, int x, int y);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 12:23:34 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/28 02:02:04 by miniklar         ###   ########.fr       */
+/*   Updated: 2025/02/28 20:14:19 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	move_player_up(t_struct *all_struct, char **tab, int x, int y)
 {
-	int i = 0;
 	if (tab[x - 1][y] == '0' || tab[x - 1][y] == 'E' || tab[x - 1][y] == 'C'
 		|| tab[x - 1][y] == 'T')
 	{
@@ -30,10 +29,7 @@ void	move_player_up(t_struct *all_struct, char **tab, int x, int y)
 		}
 		else if (tab[x - 1][y] == 'C')
 		{
-			i = ft_search_items_instances(all_struct, x - 1, y); 
-			mlx_set_instance_depth(&all_struct->data->img_c4->instances[i], 0);
-			mlx_set_instance_depth(&all_struct->data->img_c4_red->instances[i], 0);
-			all_struct->init->n_collectibles--;
+			remove_items(all_struct, x - 1, y);
 			tab[x - 1][y] = 'P';
 			if (tab[x][y] != 'E')
 				tab[x][y] = '0';
@@ -44,9 +40,6 @@ void	move_player_up(t_struct *all_struct, char **tab, int x, int y)
 
 void	move_player_down(t_struct *all_struct, char **tab, int x, int y)
 {
-	int i;
-	
-	i = 0;
 	if (tab[x + 1][y] == '0' || tab[x + 1][y] == 'E' || tab[x + 1][y] == 'C'
 		|| tab[x + 1][y] == 'T')
 	{
@@ -57,10 +50,7 @@ void	move_player_down(t_struct *all_struct, char **tab, int x, int y)
 			tab[x][y] = '0';
 		else if (tab[x + 1][y] == 'C')
 		{
-			i = ft_search_items_instances(all_struct, x + 1, y); 
-			mlx_set_instance_depth(&all_struct->data->img_c4->instances[i], 0);
-			mlx_set_instance_depth(&all_struct->data->img_c4_red->instances[i], 0);
-			all_struct->init->n_collectibles--;
+			remove_items(all_struct, x + 1, y);
 			tab[x + 1][y] = 'P';
 			if (tab[x][y] != 'E')
 				tab[x][y] = '0';
@@ -76,9 +66,6 @@ void	move_player_down(t_struct *all_struct, char **tab, int x, int y)
 
 void	move_player_right(t_struct *all_struct, char **tab, int x, int y)
 {
-	int i;
-
-	i = 0;
 	if (tab[x][y + 1] == '0' || tab[x][y + 1] == 'E' || tab[x][y + 1] == 'C'
 		|| tab[x][y + 1] == 'T')
 	{
@@ -89,10 +76,7 @@ void	move_player_right(t_struct *all_struct, char **tab, int x, int y)
 			tab[x][y] = '0';
 		else if (tab[x][y + 1] == 'C')
 		{
-			i = ft_search_items_instances(all_struct, x, y + 1); 
-			mlx_set_instance_depth(&all_struct->data->img_c4->instances[i], 0);
-			mlx_set_instance_depth(&all_struct->data->img_c4_red->instances[i], 0);
-			all_struct->init->n_collectibles--;
+			remove_items(all_struct, x, y + 1);
 			tab[x][y + 1] = 'P';
 			if (tab[x][y] != 'E')
 				tab[x][y] = '0';
@@ -108,7 +92,6 @@ void	move_player_right(t_struct *all_struct, char **tab, int x, int y)
 
 void	move_player_left(t_struct *all_struct, char **tab, int x, int y)
 {
-	int i = 0;
 	if (tab[x][y - 1] == '0' || tab[x][y - 1] == 'E' || tab[x][y - 1] == 'C'
 		|| tab[x][y - 1] == 'T')
 	{
@@ -119,10 +102,7 @@ void	move_player_left(t_struct *all_struct, char **tab, int x, int y)
 			tab[x][y] = '0';
 		else if (tab[x][y - 1] == 'C')
 		{
-			i = ft_search_items_instances(all_struct, x, y - 1); 
-			mlx_set_instance_depth(&all_struct->data->img_c4->instances[i], 0);
-			mlx_set_instance_depth(&all_struct->data->img_c4_red->instances[i], 0);
-			all_struct->init->n_collectibles--;
+			remove_items(all_struct, x, y - 1);
 			tab[x][y - 1] = 'P';
 			if (tab[x][y] != 'E')
 				tab[x][y] = '0';

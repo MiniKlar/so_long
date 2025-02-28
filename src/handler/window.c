@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 06:01:04 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/28 01:43:17 by miniklar         ###   ########.fr       */
+/*   Updated: 2025/02/28 20:08:19 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	put_image_to_window(t_struct *all_struct)
 		x++;
 	}
 }
+
 void	init_c4(t_struct *all_struct, int x, int y)
 {
 	mlx_image_to_window(all_struct->mlx, all_struct->data->img_c4,
@@ -119,5 +120,6 @@ void	init_c4(t_struct *all_struct, int x, int y)
 		y * SIZE, x * SIZE);
 	mlx_set_instance_depth(&all_struct->data->img_c4_red
 		->instances[all_struct->init->item_counter], 2);
-	all_struct->data->img_c4_red->instances[all_struct->init->item_counter].enabled = false;
+	all_struct->data->img_c4_red->instances[all_struct->init->item_counter]
+		.enabled = false;
 }

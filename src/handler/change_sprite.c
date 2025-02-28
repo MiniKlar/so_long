@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_sprite.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 02:56:35 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/28 02:02:46 by miniklar         ###   ########.fr       */
+/*   Updated: 2025/02/28 20:07:09 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,22 +81,24 @@ void	move_sprite(t_struct *all_struct, int x)
 	all_struct->init->mov_counter++;
 }
 
-void anime_sprite(void* param)
+void	anime_sprite(void *param)
 {
 	t_struct	*struct_all;
 	int			i;
-	
+
 	i = 0;
 	struct_all = (t_struct *) param;
-	if (struct_all->init->sprite_anim < 100)
+	if (struct_all->init->sprite_anim < 60)
 		struct_all->init->sprite_anim += 1;
 	else
 	{
 		struct_all->init->sprite_anim = 0;
 		while (i != struct_all->init->collectibles)
 		{
-			struct_all->data->img_c4->instances[i].enabled = !(struct_all->data->img_c4->instances[i].enabled);
-			struct_all->data->img_c4_red->instances[i].enabled = !(struct_all->data->img_c4->instances[i].enabled);
+			struct_all->data->img_c4->instances[i].enabled = !(struct_all->data
+					->img_c4->instances[i].enabled);
+			struct_all->data->img_c4_red->instances[i].enabled = !(struct_all
+					->data->img_c4->instances[i].enabled);
 			i++;
 		}
 	}

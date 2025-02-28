@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:56:55 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/27 01:29:36 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:17:28 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,14 @@ void	move_player(mlx_key_data_t keydata, t_struct *all_struct, int x, int y)
 		if (all_struct->init->mov_counter > all_struct->init->prev_mov_counter)
 			counter_to_window(all_struct);
 	}
+}
+
+void	remove_items(t_struct *all_struct, int x, int y)
+{
+	int	i;
+
+	i = ft_search_items_instances(all_struct, x, y);
+	mlx_set_instance_depth(&all_struct->data->img_c4->instances[i], 0);
+	mlx_set_instance_depth(&all_struct->data->img_c4_red->instances[i], 0);
+	all_struct->init->n_collectibles--;
 }
